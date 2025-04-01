@@ -8,7 +8,7 @@
   const lenguageStore = useLenguageStore();
   const {name} = storeToRefs(authStore);
   const {preference, lenguagePack} = storeToRefs(lenguageStore);
-  const count = ref(0);
+  ``
 
   const communitiesList = ref(
    [

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import HomePage from './components/HomePage.vue'
-import Auth from './components/Auth.vue'
+
 </script>
 
 <template>
