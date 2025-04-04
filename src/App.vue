@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import HomePage from './components/HomePage.vue'
+
 
 </script>
 
 <template>
-  <div class = "m-4"> 
-  <HomePage></HomePage>
-  </div>
+  <nav class="flex gap-2 text-gray-200 p-4">
+    <RouterLink to="/" class="bg-red-600">Home</RouterLink>
+    <RouterLink to="/community" class="bg-green-600">Community</RouterLink>
+  </nav>
+  <RouterView class="mx-2 my-4"></RouterView>
+  
+  
+
  
 </template>
 

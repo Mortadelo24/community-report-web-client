@@ -12,9 +12,9 @@
 
   const communitiesList = ref(
    [
-    "test peru",
+    "test peru 4k",
     "cabol 2",
-    "Tecnicamente true"
+    "Tecnicament pefjdflakaje true"
   ]
   ) 
 </script>
