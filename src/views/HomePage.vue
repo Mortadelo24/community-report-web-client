@@ -1,22 +1,23 @@
 <script setup lang="ts">
-  import {ref} from 'vue';
+  import {ref, onBeforeMount} from 'vue';
   import {storeToRefs} from 'pinia';
   import {useAuthStore} from '../stores/auth.ts' 
   import {useLenguageStore} from '../stores/lenguage.ts' 
+  import {useGlobalStore} from '../stores/global.ts'
+
+  import CommunityListItem from '../components/CommunityListItem.vue'
 
   const authStore = useAuthStore();
   const lenguageStore = useLenguageStore();
+  const globalStore = useGlobalStore();
   const {name} = storeToRefs(authStore);
   const {preference, lenguagePack} = storeToRefs(lenguageStore);
-  ``
+  const {communities} = storeToRefs(globalStore);
+  
+  onBeforeMount(()=>{
+    globalStore.loadCommunities();
+  })
 
-  const communitiesList = ref(
-   [
-    "test peru 4k",
-    "cabol 2",
-    "Tecnicament pefjdflakaje true"
-  ]
-  ) 
 </script>
 
 <template>
@@ -25,9 +26,8 @@
     <div class="mt-4">
       <p class="text-xl font-medium">{{lenguagePack["communityListTitle"]}}</p>
         <div class="flex flex-col gap-2 bg-orange-100 mt-2 p-4 rounded-lg">
-          <div v-for="community in communitiesList"  class="bg-red-100 px-2 py-4 last:rounded-b-md first:rounded-t-md">
-            {{community}}
-          </div>
+          <CommunityListItem v-for="community in communities" :community="community" ref="community.id"></CommunityListItem>
+        
         </div>
       </div>
   </div>

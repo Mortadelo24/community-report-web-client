@@ -1,7 +1,8 @@
-<script setup lang="ts">
-  
-
+<script setup lang="ts"> 
+  defineProps({
+  id: String
+})
 </script>
 <template>
-    Juan peru 4444
+  <div>Juan peru id: {{ id }} </div>
 </template>
