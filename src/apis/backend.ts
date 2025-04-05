@@ -16,9 +16,10 @@ const getCommunities = async() => {
   return communities
 }
 
+export type {
+  Community
+}
+
 export {
   getCommunities,
-
-  //Interfaces | Types
-  Community
 }

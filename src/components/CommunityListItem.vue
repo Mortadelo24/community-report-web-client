@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import {Community} from '../apis/backend.ts' 
+  import type {Community} from '../apis/backend.ts' 
   const { community }  = defineProps<{community: Community}>(); 
 </script>
 <template>

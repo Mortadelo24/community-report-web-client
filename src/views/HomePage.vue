@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import {ref, onBeforeMount} from 'vue';
+  import { onBeforeMount} from 'vue';
   import {storeToRefs} from 'pinia';
   import {useAuthStore} from '../stores/auth.ts' 
   import {useLenguageStore} from '../stores/lenguage.ts' 
