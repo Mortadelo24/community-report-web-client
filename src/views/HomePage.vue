@@ -18,11 +18,24 @@
     globalStore.loadCommunities();
   })
 
+  const loadEnglishLenguagePack = ()=>{
+  lenguageStore.loadLenguagePack("en");
+  }
+
+  const loadSpanishLenuagePack = () => {
+    lenguageStore.loadLenguagePack("es");
+  }
+
 </script>
 
 <template>
   <div>
-    <p class="flex flex-row flex-center font-medium text-2xl gap-2 justify-center flex-wrap"><span class="italic font-bold">{{lenguagePack["welcome"]}}</span> @{{name}} {{preference}}</p>
+    <p class="flex flex-row flex-center font-medium text-2xl gap-2 justify-center flex-wrap"><span class="italic font-bold">{{lenguagePack["welcome"]}}</span> @{{name}}</p>
+    <div class="flex flex-col gap-2">
+    <p>Lenguage: {{preference}}</p>
+    <button @click="loadEnglishLenguagePack">Load english</button>
+    <button @click="loadSpanishLenuagePack">Load Spanish</button>
+    </div> 
     <div class="mt-4">
       <p class="text-xl font-medium">{{lenguagePack["communityListTitle"]}}</p>
         <div class="flex flex-col gap-2 bg-orange-100 mt-2 p-4 rounded-lg">
