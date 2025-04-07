@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia'
-import {ref} from 'vue'
+import {ref, computed} from 'vue'
 
 interface LanguagePack {
   welcome: string, 
@@ -16,10 +16,19 @@ export const useLanguageStore = defineStore("language", ()=>{
   
   const loadLanguagePack = async(languageCode: string) =>{
     preference.value = languageCode;
-    languagePack.value = await getLanguagePack(languageCode);
-  
-    
+    languagePack.value = await getLanguagePack(languageCode); 
   }
+
+  const getPhrase = computed(() =>{
+    if (!languagePack.value){
+      return "No text"
+    }
+    return "a";
+  })
+
+  // return a computed with a function 
+
+  
 
   return {
     preference,
