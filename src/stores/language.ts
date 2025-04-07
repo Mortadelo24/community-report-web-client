@@ -1,39 +1,30 @@
 import {defineStore} from 'pinia'
 import {ref, computed} from 'vue'
-
-interface LanguagePack {
-  welcome: string, 
-  communityListTitle: string
-}
-
-const getLanguagePack = async(languageCode: string): Promise<LanguagePack> =>{
-  return (await import(`../languages/${languageCode}.json`));
-}
+import {getLanguagePack} from '../languages/index.ts'
+import type {LanguagePack, LanguageCode} from '../languages/index.ts'
 
 export const useLanguageStore = defineStore("language", ()=>{
   const preference = ref("es");
-  const languagePack = ref<LanguagePack>();
+  const languagePack = ref<LanguagePack | null>();
   
-  const loadLanguagePack = async(languageCode: string) =>{
+  const loadLanguagePack = async(languageCode: keyof LanguageCode) =>{
     preference.value = languageCode;
     languagePack.value = await getLanguagePack(languageCode); 
   }
 
-  const getPhrase = computed(() =>{
-    if (!languagePack.value){
-      return "No text"
-    }
-    return "a";
-  })
+  const getPhrase = (key: keyof LanguagePack) => {
+    return computed(()=>{
+      if (!languagePack.value) return "No text";
+      return languagePack.value[key];
+    })
+  }
 
-  // return a computed with a function 
-
-  
 
   return {
     preference,
     languagePack,
-    loadLanguagePack
+    loadLanguagePack, 
+    getPhrase
   }
 })
 
