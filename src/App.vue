@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import {onBeforeMount} from 'vue'
-  import {useLenguageStore} from './stores/lenguage.ts'
+  import {useLanguageStore} from './stores/language.ts'
 
-  const {loadLenguagePack} = useLenguageStore();
+  const {loadLanguagePack} = useLanguageStore();
 
   onBeforeMount(()=>{
-    loadLenguagePack("en");
+    loadLanguagePack("en");
   })
 
 </script>
