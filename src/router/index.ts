@@ -1,8 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
-import CommunityPage from '../views/ComunnityPage.vue'
 import HomePage from '../views/HomePage.vue'
-import NotFound from '../views/NotFound.vue'
+
 
 const routes = [
   
@@ -10,13 +9,13 @@ const routes = [
   {
     path: '/community/:id', 
     name: 'community',
-    component: CommunityPage,
+    component: ()=> import('../views/ComunnityPage.vue'),
     props: true
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'notFound',
-    component: NotFound,
+    component: ()=> import('../views/NotFound.vue'),
     props: true
   }
 

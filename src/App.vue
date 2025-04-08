@@ -7,7 +7,7 @@
   const {loadLanguagePack} = useLanguageStore();
 
   onBeforeMount(()=>{
-    loadLanguagePack("es");
+    loadLanguagePack();
   })
 
 </script>

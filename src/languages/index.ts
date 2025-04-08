@@ -9,8 +9,16 @@ interface LanguageCode {
   es: string
 }
 
+const supportedLanguages = ['en', 'es'];
+
 const getLanguagePack = async(languageCode: keyof LanguageCode): Promise<LanguagePack> =>{
   return (await import(`../languages/${languageCode}.json`));
+}
+const getLanguagePreference = () => {
+  const shortLanguage = navigator.language.slice(0,2);
+  const preference = supportedLanguages.includes(shortLanguage) ?  shortLanguage   : 'en';
+
+  return preference as keyof LanguageCode
 }
 
 export type {
@@ -19,5 +27,6 @@ export type {
 }
 export {
   getLanguagePack,
+  getLanguagePreference
   
 }
