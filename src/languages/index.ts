@@ -31,6 +31,7 @@ export type {
 export {
   getLanguagePack,
   getLanguagePreference,
+  supportedLanguages
   
   
 }
