@@ -1,7 +1,8 @@
 
 interface LanguagePack {
   welcome: string, 
-  communityListTitle: string
+  communityListTitle: string,
+  appTitle: string
 }
 
 interface LanguageCode {
@@ -21,12 +22,15 @@ const getLanguagePreference = () => {
   return preference as keyof LanguageCode
 }
 
+
+
 export type {
   LanguagePack,
   LanguageCode
 }
 export {
   getLanguagePack,
-  getLanguagePreference
+  getLanguagePreference,
+  
   
 }
