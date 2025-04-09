@@ -1,7 +1,8 @@
 import {createRouter,createWebHashHistory } from 'vue-router'
 
-import HomePage from '../views/HomePage.vue'
 
+import HomePage from '../views/HomePage.vue'
+import {authRoutes} from './auth.ts'
 
 const routes = [
   
@@ -11,6 +12,13 @@ const routes = [
     name: 'community',
     component: ()=> import('../views/ComunnityPage.vue'),
     props: true
+  },
+  {
+    path: '/auth',
+    component: () => import('../views/AuthPage.vue'),
+    children: [
+      ...authRoutes
+    ]
   },
   {
     path: '/:pathMatch(.*)*',

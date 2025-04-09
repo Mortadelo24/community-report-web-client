@@ -11,7 +11,7 @@
   const languageStore = useLanguageStore();
   const globalStore = useGlobalStore();
   
-  const {name} = storeToRefs(authStore);
+  const {displayName} = storeToRefs(authStore);
   const {communities} = storeToRefs(globalStore);
   const {getPhrase}  = languageStore;  
 
@@ -25,7 +25,7 @@
 
 <template>
   <div>
-    <p class="flex flex-row flex-center font-medium text-2xl gap-2 justify-center flex-wrap"><span class="italic font-bold">{{getPhrase('welcome')}}</span> @{{name}}</p>
+    <p class="flex flex-row flex-center font-medium text-2xl gap-2 justify-center flex-wrap"><span class="italic font-bold">{{getPhrase('welcome')}}</span> @{{displayName}}</p>
     <div class="flex flex-col gap-2">
     </div> 
     <div class="mt-4">

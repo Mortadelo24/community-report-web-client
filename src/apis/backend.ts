@@ -7,14 +7,7 @@ interface User {
   id: number;
   name:string;
 }
-const users: User[] = [
-  {
-    id: 1, name: "Pedro2"
-  }, 
-  {
-    id: 2, name: "Calton2"
-  }
-]
+
 
 const communities: Community[] = [
   {id: 1, name: "juan perez"},
@@ -28,9 +21,7 @@ const communities: Community[] = [
 const getCommunities = async() => {
   return communities
 }
-const getUser = async(id: number) => {
-  return users.find(user => user.id == id)
-}
+
 export type {
   Community,
   User
@@ -38,6 +29,5 @@ export type {
 
 export {
   getCommunities,
-  getUser
 
 }
