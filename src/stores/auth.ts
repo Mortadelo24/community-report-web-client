@@ -4,7 +4,6 @@ import {logIn as logInWithGoogle, logOut as logOutWithGoogle} from '../apis/fire
 import type { User as FireBaseUser } from 'firebase/auth';
 
 export const useAuthStore = defineStore('auth', ()=>{
-  const name = ref("Juan perez");
   const isAuthenticated = ref(false);
   const displayName = ref("");
 
@@ -12,6 +11,7 @@ export const useAuthStore = defineStore('auth', ()=>{
     try{
       await logInWithGoogle();
     }catch(error){
+      
       return
     }
     
@@ -33,7 +33,6 @@ export const useAuthStore = defineStore('auth', ()=>{
   }
 
   return {
-    name,
     isAuthenticated,
     displayName,
     logIn,
