@@ -1,35 +1,26 @@
 import {createRouter,createWebHashHistory } from 'vue-router'
-import {useAuthStore} from '../stores/auth.ts'
 
 import HomePage from '../views/HomePage.vue'
 import {authRoutes} from './auth.ts'
+import {isUserAuthenticated, waitForAuthToInitialize} from '../apis/firebase.ts'
 
 
-
-
-const isUserAuthenticatedGuard = ()=>{
-  const authStore = useAuthStore();
-    if (!authStore.isAuthenticated){
-      router.push({name: 'logIn'});
-    }  
-
-}
 
 const routes = [
   
   {
     path: '/', 
     name: 'home',
-    beforeEnter: isUserAuthenticatedGuard,
     component: HomePage,
+    meta: {requiresAuth: true}
 
   },
   {
     path: '/community/:id', 
     name: 'community',
-    beforeEnter: isUserAuthenticatedGuard,
     component: ()=> import('../views/ComunnityPage.vue'),
-    props: true
+    props: true,
+    meta: {requiresAuth: true}
   },
   {
     path: '/auth',
@@ -53,6 +44,14 @@ const router = createRouter({
 
 })
 
+router.beforeEach(async(to, __) => {
+  await waitForAuthToInitialize();
+  if (to.meta.requiresAuth && !isUserAuthenticated()) {
+    return {
+      name: 'logIn'
+    }
+  }
+})
 
 export {
   router

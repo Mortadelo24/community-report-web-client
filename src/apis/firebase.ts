@@ -15,11 +15,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const provider = new GoogleAuthProvider();
-
-
-
-const logIn = async() => {
+const logIn = async() => { 
+  const provider = new GoogleAuthProvider();
   try{
     await signInWithPopup(auth, provider);
   }catch(error){
@@ -57,6 +54,20 @@ const onLogOut = (callBack: ()=>void) =>{
   })
 }
 
+let isAuthInitialized = false;
+const waitForAuthToInitialize = (): Promise<void> =>{
+  return new Promise((resolve)=>{
+    if (isAuthInitialized) {
+      resolve();
+      return 
+    }
+    const unsubscribe =  onAuthStateChanged(auth, (__)=>{
+      isAuthInitialized = true;
+      unsubscribe();
+      resolve();
+    })
+  })
+} 
 
 
 export{
@@ -65,5 +76,6 @@ export{
  onLogIn,
  onLogOut,
   isUserAuthenticated,
- 
-}
+ waitForAuthToInitialize,
+} 
+
