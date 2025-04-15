@@ -5,17 +5,20 @@
   import {onLogOut, onLogIn} from './apis/firebase.ts'
   import LanguageSelect from './components/LanguageSelect.vue'
 import { storeToRefs } from 'pinia'
+  import {setAuthenticationToken} from './apis/backend.ts'
 
   const {loadLanguagePack} = useLanguageStore();
  
   const authStore = useAuthStore();
-  const {loadUserInfo} = authStore;
+  const {loadUser} = authStore;
   const {isAuthenticated} = storeToRefs(authStore); 
 
 
-  onLogIn((user)=>{ 
+  onLogIn(async(user)=>{ 
+    setAuthenticationToken(await user.getIdToken()); 
+    loadUser(); 
     isAuthenticated.value = true;
-    loadUserInfo(user);
+    
   })
   onLogOut(()=>{
     isAuthenticated.value = false;

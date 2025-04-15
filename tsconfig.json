@@ -1,4 +1,9 @@
 {
+  "compilerOptions":{
+    "typeRoots": [
+      "./src/types/"
+    ]
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

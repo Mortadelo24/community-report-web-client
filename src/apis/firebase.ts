@@ -1,6 +1,5 @@
 import {initializeApp} from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, type User, signOut } from "firebase/auth";
-
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, type User, signOut, getIdToken } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDPgImbmjeM7LFBcICZMVPjKAUAfz6g_0I",
@@ -17,12 +16,14 @@ const auth = getAuth(app);
 
 const logIn = async() => { 
   const provider = new GoogleAuthProvider();
+
   try{
-    await signInWithPopup(auth, provider);
+    await signInWithPopup(auth, provider)
   }catch(error){
-    console.error("Error during aythentication: ", error);
-    throw new Error("Error: unable to log in");
+    console.error("Error during authentication: ", error);
   } 
+  
+  return false
   
 }
 const logOut = async()=>{
@@ -30,8 +31,10 @@ const logOut = async()=>{
     await signOut(auth);
   } catch(error){
     console.error("Error during loggin out: ", error);
-    throw new Error("Error: unable to log out");
+    return false
   }
+
+  return true
 } 
 
 const isUserAuthenticated = () => {
