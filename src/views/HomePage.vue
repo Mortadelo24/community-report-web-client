@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onBeforeMount} from 'vue';
+  import { onBeforeMount, onBeforeUpdate} from 'vue';
   import {storeToRefs} from 'pinia';
   import {useAuthStore} from '../stores/auth.ts' 
   import {useLanguageStore} from '../stores/language.ts' 
@@ -13,13 +13,8 @@
   
   const {displayName} = storeToRefs(authStore);
   const {communities} = storeToRefs(globalStore);
+
   const {getPhrase}  = languageStore;  
-
-  
-
-  onBeforeMount(()=>{
-    globalStore.loadCommunities();
-  })
 
 </script>
 

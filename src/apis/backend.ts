@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 interface Community {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -10,18 +10,18 @@ const backEnd = axios.create({
   timeout: 1000,
 })
 
-const communities: Community[] = [
-  {id: 1, name: "juan perez"},
-  {id: 2, name: 'peru is not real'},
-  {
-    id:3, name: 'prueba 2'
-  }
-]
-
 const setAuthenticationToken = (authToken: string | null) => {
   backEnd.defaults.headers.common['Authorization'] = authToken; 
 }
-const getCommunities = async() => {
+const getCommunities = async(userID: string) => {
+  const response = await backEnd.get(`/users/${userID}/communities`);
+  const data: any[] = response.data
+  const communities = data.map((communityInfo)=>{
+    return {
+      id: communityInfo.id,
+      name: communityInfo.name
+    } as Community
+  })
   return communities
 }
 const getCurrentUser = async()=>{
@@ -30,7 +30,8 @@ const getCurrentUser = async()=>{
   
   return {
     id: data.id,
-    displayName: data.display_name
+    displayName: data.display_name,
+    photoURL: data.photo_url
   } as User
 }
 

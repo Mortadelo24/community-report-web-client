@@ -2,11 +2,13 @@ import {defineStore} from 'pinia'
 import {ref} from 'vue'
 import {logIn as logInWithGoogle, logOut as logOutWithGoogle} from '../apis/firebase.ts'
 import {getCurrentUser} from '../apis/backend.ts'
+import {useGlobalStore} from '../stores/global.ts'
 
 export const useAuthStore = defineStore('auth', ()=>{
   const isAuthenticated = ref(false);
   const displayName = ref<string|null>(null);
-  const id = ref<string|null>(null)
+  const id = ref<string|null>(null);
+  const photoURL = ref<string|null>(null);
   
   const logIn = async() =>{ 
     if( await logInWithGoogle() ){
@@ -25,6 +27,9 @@ export const useAuthStore = defineStore('auth', ()=>{
 
     displayName.value = user.displayName;
     id.value = user.id;
+    photoURL.value = user.photoURL;
+    const globalStore = useGlobalStore();
+    globalStore.loadCommunities(id.value);
   }
 
   return {
@@ -32,6 +37,7 @@ export const useAuthStore = defineStore('auth', ()=>{
     displayName,
     logIn,
     logOut,
-    loadUser
+    loadUser,
+    id
   }
 })

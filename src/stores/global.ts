@@ -5,11 +5,10 @@ import type {Community} from '../apis/backend.ts'
 
 export const useGlobalStore = defineStore('general', ()=>{
   const communities = ref<Community[]>([]);
-  
-  
-  const loadCommunities = async() =>{
+   
+  const loadCommunities = async(userID: string) =>{
       
-      communities.value =  await getCommunities();
+      communities.value =  await getCommunities(userID);
   }
 
   return {
