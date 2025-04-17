@@ -1,30 +1,12 @@
 <script setup lang="ts">
   import {onBeforeMount} from 'vue'
   import {useLanguageStore} from './stores/language.ts'
-  import {useAuthStore} from './stores/auth.ts'
-  import {onLogOut, onLogIn} from './apis/firebase.ts'
-  import LanguageSelect from './components/LanguageSelect.vue'
-import { storeToRefs } from 'pinia'
-  import {setAuthenticationToken} from './apis/backend.ts'
+  import LanguageSelect from './components/LanguageSelect.vue' 
 
-  const {loadLanguagePack} = useLanguageStore();
- 
-  const authStore = useAuthStore();
-  const {loadUser} = authStore;
-  const {isAuthenticated} = storeToRefs(authStore); 
-
-
-  onLogIn(async(user)=>{ 
-    setAuthenticationToken(await user.getIdToken()); 
-    loadUser(); 
-    isAuthenticated.value = true;
-    
-  })
-  onLogOut(()=>{
-    isAuthenticated.value = false;
-  })
+  const {loadLanguagePack} = useLanguageStore(); 
 
   onBeforeMount(()=>{
+
     loadLanguagePack();
   })
 

@@ -2,17 +2,19 @@ import  {defineStore} from  'pinia'
 import {ref} from 'vue'
 import {getCommunities} from '../apis/backend.ts'
 import type {Community} from '../apis/backend.ts'
+import {useAuthStore} from './auth.ts'
 
 export const useGlobalStore = defineStore('general', ()=>{
   const communities = ref<Community[]>([]);
    
-  const loadCommunities = async(userID: string) =>{
-      
-      communities.value =  await getCommunities(userID);
+  const loadCurrentUserCommunities = async() =>{
+      const currentUser = useAuthStore().currentUser;
+      if (!currentUser) return
+      communities.value =  await getCommunities(currentUser.id);
   }
 
   return {
     communities,
-    loadCommunities
+    loadCurrentUserCommunities
   }
 })

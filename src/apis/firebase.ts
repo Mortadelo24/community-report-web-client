@@ -18,12 +18,12 @@ const logIn = async() => {
   const provider = new GoogleAuthProvider();
 
   try{
-    await signInWithPopup(auth, provider)
+    return await signInWithPopup(auth, provider);
   }catch(error){
     console.error("Error during authentication: ", error);
   } 
   
-  return false
+  return null
   
 }
 const logOut = async()=>{

@@ -1,43 +1,48 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
-import {logIn as logInWithGoogle, logOut as logOutWithGoogle} from '../apis/firebase.ts'
-import {getCurrentUser} from '../apis/backend.ts'
-import {useGlobalStore} from '../stores/global.ts'
+import {logIn as logInWithGoogle} from '../apis/firebase.ts'
+import {getCurrentUser, loadAccessToken, setAccessToken , logIn as logInBackEnd} from '../apis/backend.ts'
 
 export const useAuthStore = defineStore('auth', ()=>{
   const isAuthenticated = ref(false);
-  const displayName = ref<string|null>(null);
-  const id = ref<string|null>(null);
-  const photoURL = ref<string|null>(null);
+  const currentUser = ref<User | null>(null); 
   
-  const logIn = async() =>{ 
-    if( await logInWithGoogle() ){
+  const logIn = async() =>{
+    await logOut();
+    const googleResponse: any = await logInWithGoogle(); 
+    if( !googleResponse ) return
+    
+    const firebase_token = googleResponse['user']['accessToken'];
+    
+    try{
+      const accessToken = await logInBackEnd('google', firebase_token);
+      setAccessToken(accessToken);
       isAuthenticated.value = true;
-    } 
+    } catch(__){
+      console.log("The user is not register")
+    }
+    
   }
   const logOut = async() => {
-    if(await logOutWithGoogle()){
-      isAuthenticated.value = false;
-      displayName.value = null;
-      id.value = null;
-    } 
+    setAccessToken(null) 
+    isAuthenticated.value = false;
+    currentUser.value = null;
   }
-  const loadUser = async() => {
-    const user = await getCurrentUser();
-
-    displayName.value = user.displayName;
-    id.value = user.id;
-    photoURL.value = user.photoURL;
-    const globalStore = useGlobalStore();
-    globalStore.loadCommunities(id.value);
+  const loadCurrentUser = async() => {
+    currentUser.value = await getCurrentUser();
   }
-
+  
+  const initializeAuth = ()=>{
+    if (loadAccessToken()){
+      isAuthenticated.value = true;
+    }
+  } 
   return {
+    initializeAuth,
+    currentUser,
     isAuthenticated,
-    displayName,
     logIn,
     logOut,
-    loadUser,
-    id
+    loadCurrentUser
   }
 })

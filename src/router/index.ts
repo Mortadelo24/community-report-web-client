@@ -2,7 +2,7 @@ import {createRouter,createWebHashHistory } from 'vue-router'
 
 import HomePage from '../views/HomePage.vue'
 import {authRoutes} from './auth.ts'
-import {isUserAuthenticated, waitForAuthToInitialize} from '../apis/firebase.ts'
+import {useAuthStore} from '../stores/auth.ts'
 
 
 
@@ -45,8 +45,8 @@ const router = createRouter({
 })
 
 router.beforeEach(async(to, __) => {
-  await waitForAuthToInitialize();
-  if (to.meta.requiresAuth && !isUserAuthenticated()) {
+  
+  if (to.meta.requiresAuth && !useAuthStore().isAuthenticated) {
     return {
       name: 'logIn'
     }

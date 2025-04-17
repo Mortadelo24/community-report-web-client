@@ -4,6 +4,8 @@ interface Community {
   id: string;
   name: string;
 }
+type Provider = 'google';
+
 
 const backEnd = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -13,6 +15,36 @@ const backEnd = axios.create({
 const setAuthenticationToken = (authToken: string | null) => {
   backEnd.defaults.headers.common['Authorization'] = authToken; 
 }
+
+const setAccessToken = (token: string | null) => {
+  if (token){
+    localStorage.setItem('elkit', token);
+    setAuthenticationToken(token);
+  } else {
+    localStorage.removeItem('elkit');
+    setAuthenticationToken(null);
+  }
+} 
+const loadAccessToken = () => {
+  const token = localStorage.getItem('elkit');
+  if (!token) return false
+  setAuthenticationToken(token)
+  return true
+}
+
+const logIn = async(provider: Provider, token: string) =>{
+ try{
+  const response = await backEnd.post('/login', {
+    "provider": provider,
+    "token": token
+  });
+
+  return  response.data['accessToken']
+ }catch(_){
+    throw new Error("Could not log in the user")
+ } 
+}
+
 const getCommunities = async(userID: string) => {
   const response = await backEnd.get(`/users/${userID}/communities`);
   const data: any[] = response.data
@@ -31,7 +63,6 @@ const getCurrentUser = async()=>{
   return {
     id: data.id,
     displayName: data.display_name,
-    photoURL: data.photo_url
   } as User
 }
 
@@ -41,6 +72,8 @@ export type {
 
 export {
   getCommunities,
-  setAuthenticationToken,
-  getCurrentUser
+  loadAccessToken,
+  setAccessToken,
+  getCurrentUser,
+  logIn
 }
