@@ -4,12 +4,12 @@ const authRoutes = [
   {
     path: '',
     name: 'auth',
-    redirect: {name: 'logIn'}
+    component: () => import('../views/LogInPage.vue')
   },
   {
     path: 'login',
     name: 'logIn', 
-    component: () => import('../views/auth/LogInPage.vue'),
+    component: () => import('../views/LogInPage.vue'),
   }
 ]
 

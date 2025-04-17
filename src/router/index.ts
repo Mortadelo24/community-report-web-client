@@ -1,10 +1,8 @@
 import {createRouter,createWebHashHistory } from 'vue-router'
 
 import HomePage from '../views/HomePage.vue'
-import {authRoutes} from './auth.ts'
+import {authRoutes} from '../modules/auth/router'
 import {useAuthStore} from '../stores/auth.ts'
-
-
 
 const routes = [
   
@@ -24,7 +22,6 @@ const routes = [
   },
   {
     path: '/auth',
-    component: () => import('../views/AuthPage.vue'),
     children: [
       ...authRoutes
     ]

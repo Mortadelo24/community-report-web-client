@@ -44,6 +44,18 @@ const logIn = async(provider: Provider, token: string) =>{
     throw new Error("Could not log in the user")
  } 
 }
+const register = async(provider: Provider, token: string) =>{
+  try{
+    const response = await backEnd.post('/users', {
+      "provider": provider,
+      "token": token
+    });
+
+    return response.data['accessToken']
+  }catch(__){
+    throw new Error("Could not register the user");
+  }
+}
 
 const getCommunities = async(userID: string) => {
   const response = await backEnd.get(`/users/${userID}/communities`);
@@ -75,5 +87,6 @@ export {
   loadAccessToken,
   setAccessToken,
   getCurrentUser,
-  logIn
+  logIn,
+  register
 }

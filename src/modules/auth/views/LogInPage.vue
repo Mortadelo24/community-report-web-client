@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia';
-import {useAuthStore} from '../../stores/auth'
-import { router } from '../../router/index.ts';
+import {useAuthStore} from '../../../stores/auth.ts'
+import { router } from '../../../router/index.ts';
   const authStore = useAuthStore(); 
   const {logIn, logOut} = authStore;
   const {isAuthenticated} = storeToRefs(authStore);

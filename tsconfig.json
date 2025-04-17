@@ -2,7 +2,11 @@
   "compilerOptions":{
     "typeRoots": [
       "./src/types/"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "files": [],
   "references": [

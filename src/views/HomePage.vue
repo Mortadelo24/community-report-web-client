@@ -5,6 +5,7 @@
   import {useGlobalStore} from '../stores/global.ts'
 
   import CommunityListItem from '../components/CommunityListItem.vue'
+  import Button from '../components/Button.vue'
 import { onBeforeMount } from 'vue';
 
   const authStore = useAuthStore();
@@ -28,7 +29,11 @@ import { onBeforeMount } from 'vue';
     <div class="flex flex-col gap-2">
     </div> 
     <div class="mt-4">
-      <p class="text-xl font-medium">{{getPhrase('communityListTitle')}}</p>
+      <div class="flex flex-row justify-between">
+        <p class="text-xl font-medium">{{getPhrase('communityListTitle')}}</p>
+        <Button>Create</Button>
+      </div>
+      
         <div class="flex flex-col gap-2 bg-orange-100 mt-2 p-4 rounded-lg">
           <CommunityListItem v-for="community in communities" :community="community" ref="community.id"></CommunityListItem>
         
