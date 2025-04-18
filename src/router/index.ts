@@ -1,30 +1,17 @@
 import {createRouter,createWebHashHistory } from 'vue-router'
 
-import HomePage from '../views/HomePage.vue'
-import {authRoutes} from '../modules/auth/router'
+import {authRouter} from '../modules/auth/router'
+import { communityRouter } from '../modules/community/router/index.ts'
 import {useAuthStore} from '../stores/auth.ts'
 
 const routes = [
-  
   {
-    path: '/', 
-    name: 'home',
-    component: HomePage,
-    meta: {requiresAuth: true}
-
-  },
-  {
-    path: '/community/:id', 
-    name: 'community',
-    component: ()=> import('../views/ComunnityPage.vue'),
-    props: true,
-    meta: {requiresAuth: true}
+    path: '/',
+    ...communityRouter
   },
   {
     path: '/auth',
-    children: [
-      ...authRoutes
-    ]
+    ...authRouter
   },
   {
     path: '/:pathMatch(.*)*',

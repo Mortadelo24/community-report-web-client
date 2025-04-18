@@ -1,20 +1,23 @@
 
 
-const authRoutes = [
-  {
-    path: '',
-    name: 'auth',
-    component: () => import('../views/LogInPage.vue')
-  },
-  {
-    path: 'login',
-    name: 'logIn', 
-    component: () => import('../views/LogInPage.vue'),
-  }
-]
+const authRouter = {
+  component: ()=> import('../views/AuthLayout.vue'),
+  children: [
+    {
+      path: '',
+      name: 'auth',
+      redirect: {name: 'logIn'}
+    },
+    {
+      path: 'login',
+      name: 'logIn',
+      component: () => import('../views/LogInPage.vue'),
+    }
+  ]
+}
 
 
 
 export {
-  authRoutes
+  authRouter
 }

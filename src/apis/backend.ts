@@ -13,7 +13,7 @@ const backEnd = axios.create({
 })
 
 const setAuthenticationToken = (authToken: string | null) => {
-  backEnd.defaults.headers.common['Authorization'] = authToken; 
+  backEnd.defaults.headers.common['Authorization'] = `Bearer ${authToken}`; 
 }
 
 const setAccessToken = (token: string | null) => {

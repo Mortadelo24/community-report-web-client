@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import {storeToRefs} from 'pinia';
-  import {useAuthStore} from '../stores/auth.ts' 
-  import {useLanguageStore} from '../stores/language.ts' 
-  import {useGlobalStore} from '../stores/global.ts'
+  import {useAuthStore} from '@/stores/auth.ts'
+  import {useLanguageStore} from '@/stores/language.ts' 
+  import {useGlobalStore} from '@/stores/global.ts'
 
   import CommunityListItem from '../components/CommunityListItem.vue'
-  import Button from '../components/Button.vue'
-import { onBeforeMount } from 'vue';
+  import Button from '@/components/Button.vue'
+  import { onBeforeMount } from 'vue';
 
   const authStore = useAuthStore();
   const languageStore = useLanguageStore();
