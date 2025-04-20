@@ -32,13 +32,20 @@ export const useAuthStore = defineStore('auth', ()=>{
     currentUser.value = await getCurrentUser();
   }
   
-  const initializeAuth = ()=>{
+  const initialize = async()=>{
     if (loadAccessToken()){
-      isAuthenticated.value = true;
+      try{
+        await getCurrentUser();
+        isAuthenticated.value = true;        
+      }catch(__){
+        console.error("The user was not found")
+      }
+      
+      
     }
   } 
   return {
-    initializeAuth,
+    initialize,
     currentUser,
     isAuthenticated,
     logIn,

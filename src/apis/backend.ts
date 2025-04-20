@@ -67,6 +67,15 @@ const getCurrentUser = async()=>{
   } as User
 }
 
+const checkServerHealth = async()=>{
+  try{
+    await backEnd.get('/health');
+  } catch(__){
+    return false
+  }
+  return true
+}
+
 export type {
   Community,
 }
@@ -76,5 +85,6 @@ export {
   loadAccessToken,
   setAccessToken,
   getCurrentUser,
+  checkServerHealth,
   logIn,
 }
