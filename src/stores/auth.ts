@@ -31,8 +31,8 @@ export const useAuthStore = defineStore('auth', ()=>{
   const loadCurrentUser = async() => {
     currentUser.value = await getCurrentUser();
   }
-  
-  const initialize = async()=>{
+ 
+  const authenticateLocalUser =  async()=>{
     if (loadAccessToken()){
       try{
         await getCurrentUser();
@@ -44,12 +44,16 @@ export const useAuthStore = defineStore('auth', ()=>{
       
     }
   } 
+  const initialize = async()=>{
+    await authenticateLocalUser();
+  }
   return {
     initialize,
     currentUser,
     isAuthenticated,
     logIn,
     logOut,
-    loadCurrentUser
+    loadCurrentUser,
+    authenticateLocalUser
   }
 })

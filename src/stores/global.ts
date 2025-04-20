@@ -8,8 +8,18 @@ export const useGlobalStore = defineStore('general', ()=>{
   const communities = ref<Community[]>([]);
   const isServerUp = ref(true);
 
+
   const checkIfServerIsUp = async()=>{
-    isServerUp.value = await checkServerHealth();
+    if (await checkServerHealth()){
+        if(!isServerUp.value){
+          useAuthStore().authenticateLocalUser();
+        }
+        isServerUp.value = true; 
+    }else {
+      isServerUp.value = false;
+    }
+    
+    
   }
 
   const loadCurrentUserCommunities = async() =>{
@@ -19,7 +29,9 @@ export const useGlobalStore = defineStore('general', ()=>{
   }
 
   const initialize = ()=>{
-    setInterval(checkIfServerIsUp, 10000)    
+    checkIfServerIsUp();    
+    setInterval(checkIfServerIsUp, 10000);
+    
   } 
 
   return {
