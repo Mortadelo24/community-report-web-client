@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  import type {Community} from '../../../apis/backend.ts' 
-  import {router} from '../../../router/index.ts'
+  import {router} from '@/router'
   const { community }  = defineProps<{community: Community}>();
   
   const goToCommunity = () => {

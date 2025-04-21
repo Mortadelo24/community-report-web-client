@@ -1,7 +1,6 @@
 import  {defineStore} from  'pinia' 
 import {ref} from 'vue'
-import {getCommunities, checkServerHealth} from '../apis/backend.ts'
-import type {Community} from '../apis/backend.ts'
+import backend from '../apis/backend.ts'
 import {useAuthStore} from './auth.ts'
 
 export const useGlobalStore = defineStore('general', ()=>{
@@ -10,7 +9,7 @@ export const useGlobalStore = defineStore('general', ()=>{
 
 
   const checkIfServerIsUp = async()=>{
-    if (await checkServerHealth()){
+    if (await backend.checkServerHealth()){
         if(!isServerUp.value){
           useAuthStore().authenticateLocalUser();
         }
@@ -22,10 +21,15 @@ export const useGlobalStore = defineStore('general', ()=>{
     
   }
 
+  const createCommunity = async(communityCreate: CommunityCreate) => {
+    await backend.createCommunity(communityCreate)
+    await loadCurrentUserCommunities(); 
+  }
+
   const loadCurrentUserCommunities = async() =>{
       const currentUser = useAuthStore().currentUser;
       if (!currentUser) return
-      communities.value =  await getCommunities(currentUser.id);
+      communities.value =  await backend.getCommunities(currentUser.id);
   }
 
   const initialize = ()=>{
@@ -39,6 +43,7 @@ export const useGlobalStore = defineStore('general', ()=>{
     isServerUp,
     loadCurrentUserCommunities,
     checkIfServerIsUp,
-    initialize
+    initialize,
+    createCommunity
   }
 })

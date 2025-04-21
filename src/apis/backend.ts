@@ -1,9 +1,5 @@
 import axios from 'axios'
 
-interface Community {
-  id: string;
-  name: string;
-}
 type Provider = 'google';
 
 
@@ -50,12 +46,7 @@ const logIn = async(provider: Provider, token: string) =>{
 const getCommunities = async(userID: string) => {
   const response = await backEnd.get(`/users/${userID}/communities`);
   const data: any[] = response.data
-  const communities = data.map((communityInfo)=>{
-    return {
-      id: communityInfo.id,
-      name: communityInfo.name
-    } as Community
-  })
+  const communities = data as Community[]
   return communities
 }
 const getCurrentUser = async()=>{
@@ -77,7 +68,7 @@ const checkServerHealth = async()=>{
   return true
 }
 
-const createCommunity = async(newCommunity: {name: string})=>{
+const createCommunity = async(newCommunity: CommunityCreate)=>{
   try{
     await backEnd.post('/communities', newCommunity);
   }catch(__){
@@ -85,11 +76,7 @@ const createCommunity = async(newCommunity: {name: string})=>{
   }
 }
 
-export type {
-  Community,
-}
-
-export {
+export default {
   getCommunities,
   loadAccessToken,
   setAccessToken,

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  import type {Community} from '../apis/backend.ts' 
   import {router} from '../router/index.ts'
   const { community }  = defineProps<{community: Community}>();
   

@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
 import {logIn as logInWithGoogle} from '../apis/firebase.ts'
-import {getCurrentUser, loadAccessToken, setAccessToken , logIn as logInBackEnd} from '../apis/backend.ts'
+import backend from '../apis/backend.ts'
 
 export const useAuthStore = defineStore('auth', ()=>{
   const isAuthenticated = ref(false);
@@ -15,8 +15,8 @@ export const useAuthStore = defineStore('auth', ()=>{
     const firebase_token = googleResponse['user']['accessToken'];
     
     try{
-      const accessToken = await logInBackEnd('google', firebase_token);
-      setAccessToken(accessToken);
+      const accessToken = await backend.logIn('google', firebase_token);
+      backend.setAccessToken(accessToken);
       isAuthenticated.value = true;
     } catch(__){
       console.error("There is a problem with the authentication")
@@ -24,18 +24,18 @@ export const useAuthStore = defineStore('auth', ()=>{
     
   } 
   const logOut = async() => {
-    setAccessToken(null) 
+    backend.setAccessToken(null) 
     isAuthenticated.value = false;
     currentUser.value = null;
   }
   const loadCurrentUser = async() => {
-    currentUser.value = await getCurrentUser();
+    currentUser.value = await backend.getCurrentUser();
   }
  
   const authenticateLocalUser =  async()=>{
-    if (loadAccessToken()){
+    if (backend.loadAccessToken()){
       try{
-        await getCurrentUser();
+        await backend.getCurrentUser();
         isAuthenticated.value = true;        
       }catch(__){
         console.error("The user was not found")
