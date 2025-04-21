@@ -13,6 +13,7 @@ const backEnd = axios.create({
 })
 
 const setAuthenticationToken = (authToken: string | null) => {
+  console.log("Auth token: ", authToken)
   backEnd.defaults.headers.common['Authorization'] = `Bearer ${authToken}`; 
 }
 
@@ -76,6 +77,14 @@ const checkServerHealth = async()=>{
   return true
 }
 
+const createCommunity = async(newCommunity: {name: string})=>{
+  try{
+    await backEnd.post('/communities', newCommunity);
+  }catch(__){
+    console.error("could not create the community");
+  }
+}
+
 export type {
   Community,
 }
@@ -87,4 +96,5 @@ export {
   getCurrentUser,
   checkServerHealth,
   logIn,
+  createCommunity
 }
