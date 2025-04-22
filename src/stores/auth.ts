@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
 import {logIn as logInWithGoogle} from '../apis/firebase.ts'
-import backend from '../apis/backend.ts'
+import backend from '../apis/backend'
 
 export const useAuthStore = defineStore('auth', ()=>{
   const isAuthenticated = ref(false);
