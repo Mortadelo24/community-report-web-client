@@ -17,7 +17,7 @@ const { getPhrase } = languageStore;
 
 onBeforeMount(async () => {
   await authStore.loadCurrentUser();
-  await globalStore.loadCurrentUserCommunities();
+   await globalStore.loadCurrentUserOwnedCommunities();
 })
 
 </script>

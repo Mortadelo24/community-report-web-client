@@ -10,8 +10,8 @@ const getCurrentUser = async()=>{
   } as User
 }
 
-const getCommunities = async(userID: string) => {
-  const response = await backend.get(`/users/${userID}/communities/joined`);
+const getUserCommunitiesJoined = async() => {
+  const response = await backend.get(`/users/me/communities/joined`);
   const data: any[] = response.data
   const communities = data as Community[]
   return communities
@@ -20,5 +20,5 @@ const getCommunities = async(userID: string) => {
 
 export {
     getCurrentUser,
-    getCommunities
+    getUserCommunitiesJoined
 }

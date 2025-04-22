@@ -6,14 +6,19 @@ import CommunityListItem from './CommunityListItem.vue';
 import Button from '@/components/Button.vue';
 import Modal from '@/components/Modal.vue';
 import InputText from '@/components/InputText.vue';
-import { ref } from 'vue';
-
+import { onBeforeMount, ref } from 'vue';
+import {router} from '@/router'
 const globalStore = useGlobalStore()
 
 const { getPhrase } = useLanguageStore();
-const { communities } = storeToRefs(globalStore);
-const {createCommunity} = globalStore
+const { communitiesJoined } = storeToRefs(globalStore);
+const {createCommunity, loadCurrentUserCommunitiesJoined} = globalStore;
 
+onBeforeMount(async()=>{
+    await loadCurrentUserCommunitiesJoined();
+})
+
+// modal logic
 const isModalCreate = ref(false);
 const newCommunityName = ref("");
 const onModalClose = () => {
@@ -32,8 +37,13 @@ const createNewCommunity = async()=>{
     }
     newCommunityName.value = "";
 
-    await createCommunity(newCommunity);
+    const community = await createCommunity(newCommunity);
+    if (!community) {
+        console.error("could not create the community")
+        return
+    }
     closeModalCreate();
+    router.push({name: 'community', params: {id: community.id}})
 }
 </script>
 <template>
@@ -44,7 +54,7 @@ const createNewCommunity = async()=>{
         </div>
 
         <div class="flex flex-col gap-2 bg-orange-100 mt-2 p-4 rounded-lg">
-            <CommunityListItem v-for="community in communities" :community="community" ref="community.id">
+            <CommunityListItem v-for="community in communitiesJoined" :community="community" ref="community.id">
             </CommunityListItem>
         </div>
 
