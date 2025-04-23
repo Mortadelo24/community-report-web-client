@@ -35,6 +35,10 @@ export const useAuthStore = defineStore('auth', ()=>{
   const initialize = async()=>{
     isAuthenticated.value = backendSDK.auth.isAuthenticated();
   }
+  const authenticateLocalUser = async()=>{
+        await backendSDK.auth.authenticateLocalUser();
+        isAuthenticated.value = backendSDK.auth.isAuthenticated();
+  }
   return {
     initialize,
     currentUser,
@@ -42,5 +46,6 @@ export const useAuthStore = defineStore('auth', ()=>{
     logIn,
     logOut,
     loadCurrentUser,
+    authenticateLocalUser
   }
 })

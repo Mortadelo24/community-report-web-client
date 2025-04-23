@@ -16,7 +16,7 @@ export const useGlobalStore = defineStore('general', () => {
   const checkIfServerIsUp = async () => {
     if (await backendSDK.checkServerHealth()) {
       if (!isServerUp.value) {
-        await backendSDK.auth.authenticateLocalUser();
+        await useAuthStore().authenticateLocalUser();
       }
       isServerUp.value = true;
     } else {
