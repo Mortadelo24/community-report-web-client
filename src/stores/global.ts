@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import backend from '../apis/backend'
+import { backendSDK, Community,type CommunityCreate } from '@/apis/backendSDK/index.ts'
 import { useAuthStore } from './auth.ts'
 
 export const useGlobalStore = defineStore('general', () => {
@@ -14,27 +14,25 @@ export const useGlobalStore = defineStore('general', () => {
 
 
   const checkIfServerIsUp = async () => {
-    if (await backend.checkServerHealth()) {
+    if (await backendSDK.checkServerHealth()) {
       if (!isServerUp.value) {
-        useAuthStore().authenticateLocalUser();
+        await backendSDK.auth.authenticateLocalUser();
       }
       isServerUp.value = true;
     } else {
       isServerUp.value = false;
     }
 
-
   }
 
-  const createCommunity = async (communityCreate: CommunityCreate) => {
-    const community = await backend.createCommunity(communityCreate)
-    await loadCurrentUserCommunitiesJoined();
-
-    return community
+  const createCommunity = (communityCreate: CommunityCreate) => {
+    return backendSDK.communities.create(communityCreate);
   }
 
   const loadCurrentUserCommunitiesJoined = async () => {
-    communitiesJoined.value = await backend.getUserCommunitiesJoined();
+    const {currentUser} = useAuthStore();
+    if (!currentUser) return
+    communitiesJoined.value = await currentUser.getCommunitiesJoined();
   }
 
   const loadCurrentUserOwnedCommunities = async () => {
@@ -44,7 +42,7 @@ export const useGlobalStore = defineStore('general', () => {
   }
    
   const loadCommunity = async (community_id: number) => {
-    community.value = await backend.getCommunity(community_id); 
+    community.value = await backendSDK.communities.get(community_id);
   }
 
   const initialize = () => {

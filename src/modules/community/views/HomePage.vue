@@ -23,7 +23,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div>
+  <div v-if="currentUser">
     <p class="flex flex-row flex-center font-medium text-2xl gap-2 justify-center flex-wrap"><span
         class="italic font-bold">{{ getPhrase('welcome') }}</span> @{{ currentUser?.displayName }}</p>
     

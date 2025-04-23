@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-export type Provider = 'google';
 
 const backend = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -12,14 +11,12 @@ const setAuthenticationToken = (authToken: string | null) => {
   backend.defaults.headers.common['Authorization'] = `Bearer ${authToken}`; 
 }
 
-
 const checkServerHealth = async()=>{
   try{
     await backend.get('/health');
-  } catch(__){
-    return false
-  }
-  return true
+    return true
+  }catch(__){} 
+  return false
 }
 
 export {

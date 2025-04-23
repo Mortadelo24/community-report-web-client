@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import {router} from '@/router'
+  import { Community } from '@/apis/backendSDK';
   const { community }  = defineProps<{community: Community}>();
   
   const goToCommunity = () => {
