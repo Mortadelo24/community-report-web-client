@@ -1,16 +1,23 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { backendSDK, Community,type CommunityCreate } from '@/apis/backendSDK/index.ts'
+import { backendSDK, Community, User,type CommunityCreate } from '@/apis/backendSDK/index.ts'
 import { useAuthStore } from './auth.ts'
 
 export const useGlobalStore = defineStore('general', () => {
   const communitiesJoined = ref<Community[]>([]);
   const communitiesOwned = ref<Community[]>([]);
   const isServerUp = ref(true);
+  // error 
+
+  const errorMessage = ref<string | null>(null)
+
+  const setError = (err: string) =>{
+    errorMessage.value = err;
+  }
 
   // community page
   const community = ref<Community | null>(null)
-
+  const members = ref<User[]>([])
 
 
   const checkIfServerIsUp = async () => {
@@ -43,6 +50,9 @@ export const useGlobalStore = defineStore('general', () => {
    
   const loadCommunity = async (community_id: number) => {
     community.value = await backendSDK.communities.get(community_id);
+    if (community.value){
+      members.value =  await community.value.getMembers();
+    }
   }
 
   const initialize = () => {
@@ -61,6 +71,9 @@ export const useGlobalStore = defineStore('general', () => {
     initialize,
     createCommunity,
     community,
-    loadCommunity
+    loadCommunity,
+    members,
+    errorMessage,
+    setError
   }
 })

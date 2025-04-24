@@ -1,6 +1,6 @@
-import { Community, type CommunityCreate } from '@/apis/backendSDK/index.ts';
+import { Community, User, type CommunityCreate } from '@/apis/backendSDK/index.ts';
 import { backend } from '../config';
-import { parseCommunity } from '../utils';
+import { parseCommunity, parseUserList } from '../utils';
 
 const create = async (communityCreate: CommunityCreate): Promise<Community> => {
     try{
@@ -20,7 +20,17 @@ const get = async (id: number): Promise<Community|null> => {
     return null
 }
 
+const getMembers = async (id: number): Promise<User[]> => {
+    try{
+        const data = (await backend.get(`communities/${id}/members`)).data;
+        return parseUserList(data)
+    }catch(__){}
+
+    return []
+}
+
 export {
     create,
-    get
+    get,
+    getMembers
 }

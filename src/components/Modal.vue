@@ -2,7 +2,6 @@
 const {closable = true, onClose = ()=>{}} = defineProps<{
     closable?: boolean;
     onClose?: ()=>void;
-    isClosed?: boolean
 }>()
 
 const close = ()=>{

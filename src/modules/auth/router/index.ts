@@ -1,7 +1,7 @@
 
 
 const authRouter = {
-  component: ()=> import('../views/AuthLayout.vue'),
+  component: ()=> import('../views/layout.vue'),
   children: [
     {
       path: '',

@@ -23,11 +23,18 @@ const parseUser = (rawUser: any) => {
     )
 }
 
+const parseUserList = (rawUserList: any[]) =>{
+    return rawUserList.map((rawUser: any)=>{
+        return parseUser(rawUser);
+    })
+}
 
 
 
 export {
     parseCommunityList,
+    parseCommunity,
+    
+    parseUserList,
     parseUser,
-    parseCommunity
 }

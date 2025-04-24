@@ -9,7 +9,7 @@ const props = defineProps({
 })
 
 const globalStore = useGlobalStore();
-const {community} = storeToRefs(globalStore);
+const {community, members} = storeToRefs(globalStore);
 
 onBeforeMount(()=>{
   if (!props.id) return
@@ -22,6 +22,7 @@ onBeforeMount(()=>{
   <div>
     <p class="text-center text-bold text-2xl">{{ community?.name }}</p>
     id: {{ community?.id }}
+    {{ members }}
     <div>
       <select>
         <option value="">

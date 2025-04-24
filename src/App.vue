@@ -3,7 +3,7 @@
   import {useLanguageStore} from './stores/language.ts'
   import LanguageSelect from './components/LanguageSelect.vue' 
   import ServerDown from './components/ServerDown.vue';
-
+  import ErrorModal from './components/ErrorModal.vue';
 
   const {loadLanguagePack} = useLanguageStore(); 
   
@@ -23,7 +23,7 @@
   <RouterView class="mx-2 my-4"></RouterView>
   
   <ServerDown></ServerDown> 
-
+  <ErrorModal></ErrorModal>
  
 </template>
 
