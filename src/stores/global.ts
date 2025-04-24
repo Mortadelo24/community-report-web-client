@@ -15,11 +15,7 @@ export const useGlobalStore = defineStore('general', () => {
     errorMessage.value = err;
   }
 
-  // community page
-  const community = ref<Community | null>(null)
-  const members = ref<User[]>([])
-
-
+ 
   const checkIfServerIsUp = async () => {
     if (await backendSDK.checkServerHealth()) {
       if (!isServerUp.value) {
@@ -32,9 +28,7 @@ export const useGlobalStore = defineStore('general', () => {
 
   }
 
-  const createCommunity = (communityCreate: CommunityCreate) => {
-    return backendSDK.communities.create(communityCreate);
-  }
+  
 
   const loadCurrentUserCommunitiesJoined = async () => {
     const {currentUser} = useAuthStore();
@@ -48,12 +42,7 @@ export const useGlobalStore = defineStore('general', () => {
 
   }
    
-  const loadCommunity = async (community_id: number) => {
-    community.value = await backendSDK.communities.get(community_id);
-    if (community.value){
-      members.value =  await community.value.getMembers();
-    }
-  }
+  
 
   const initialize = () => {
     checkIfServerIsUp();
@@ -69,10 +58,6 @@ export const useGlobalStore = defineStore('general', () => {
     loadCurrentUserOwnedCommunities,
     checkIfServerIsUp,
     initialize,
-    createCommunity,
-    community,
-    loadCommunity,
-    members,
     errorMessage,
     setError
   }

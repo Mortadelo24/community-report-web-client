@@ -5,9 +5,11 @@ import Button from '@/components/Button.vue';
 
 import { router } from '@/router'
 import { ref } from 'vue'
+import { useCommunityStore } from '../stores/community';
 import { useGlobalStore } from '@/stores/global';
 
 
+const communityStore = useCommunityStore();
 const newCommunityName = ref("");
 
 const createNewCommunity = async () => {
@@ -17,7 +19,7 @@ const createNewCommunity = async () => {
     newCommunityName.value = "";
 
     try {
-        const community = await useGlobalStore().createCommunity(newCommunity);
+        const community = await communityStore.create(newCommunity);
         router.push({ name: 'community', params: { id: community.id } })
     } catch (__) {
        useGlobalStore().setError("Could not create the community"); 
