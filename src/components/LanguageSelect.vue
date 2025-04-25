@@ -19,7 +19,7 @@ watch(selectedLanguage, ()=> {
 
 <template>
   <div>
-    <select v-model="selectedLanguage" >
+    <select v-model="selectedLanguage" class="select-a">
       <option v-for="language in supportedLanguages" :value="language">{{language}}</option>
     </select> 
   </div>

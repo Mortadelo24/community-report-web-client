@@ -3,7 +3,6 @@ import { useLanguageStore } from '@/stores/language';
 import { useGlobalStore } from '@/stores/global';
 import { storeToRefs } from 'pinia';
 import CommunityListItem from './CommunityListItem.vue';
-import Button from '@/components/Button.vue';
 import { onBeforeMount } from 'vue';
 import { router } from '@/router';
 const globalStore = useGlobalStore()
@@ -19,15 +18,20 @@ onBeforeMount(async()=>{
 
 </script>
 <template>
-    <div>
+    <div >
         <div class="flex flex-row justify-between">
             <p class="text-xl font-medium">{{ getPhrase('communityListTitle') }}</p>
-            <Button @click="router.push({name: 'communityCreate'})">Create</Button>
+            <button type="button" @click="router.push({name: 'communityCreate'})" class="button-a">Create</button>
         </div>
 
-        <div class="flex flex-col gap-2 bg-orange-100 mt-2 p-4 rounded-lg">
-            <CommunityListItem v-for="community in communitiesJoined" :community="community" ref="community.id">
+        <div class="flex flex-col gap-2 mt-2 p-4 min-h-80 container-a">
+            <CommunityListItem v-if="communitiesJoined.length > 0" v-for="community in communitiesJoined" :community="community" ref="community.id">
             </CommunityListItem>
+            <div v-else class="h-full w-full text-center bold text-xl">
+                No communities
+
+            </div>
+            
         </div>
 
     </div>

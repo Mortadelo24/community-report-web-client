@@ -9,7 +9,7 @@
 </script>
 <template>
 
-    <div @click="goToCommunity" class="bg-red-100 px-2 py-4 last:rounded-b-md first:rounded-t-md">
+    <div @click="goToCommunity" class=" list-container-item">
         <p class="capitalize">{{community.name}}</p>
                   
     </div>

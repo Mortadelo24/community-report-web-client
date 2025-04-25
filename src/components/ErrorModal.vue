@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Button from '@/components/Button.vue'
 import { useGlobalStore } from '@/stores/global'
 import Modal from '@/components/Modal.vue'
 import { storeToRefs } from 'pinia';
@@ -15,7 +14,7 @@ const clearErrorMessage = () => {
 <template>
     <Modal v-if="errorMessage" :closable="true">
         <p class="font-bold">{{ errorMessage }}</p>
-        <Button @click="clearErrorMessage">Ok</Button>
+        <button type="button" @click="clearErrorMessage" class="button-a">Ok</button>
     </Modal>
 
 </template>

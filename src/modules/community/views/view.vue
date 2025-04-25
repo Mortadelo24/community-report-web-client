@@ -3,7 +3,6 @@ import { storeToRefs } from 'pinia';
 import { onBeforeMount, onBeforeUnmount } from 'vue';
 
 import { useCommunityStore } from '../stores/community';
-import Button from '@/components/Button.vue';
 import { router } from '@/router';
 
 
@@ -32,8 +31,8 @@ const goToMembers = () => {
   <div v-if="community" class="flex flex-col gap-2">
     <p class="text-center text-bold text-2xl m-4">{{ community?.name }}</p>
     <div class="flex flex-row gap-2">
-      <Button @click="goToReports">Reports</Button>
-      <Button @click="goToMembers">Members</Button>
+      <button type="button" @click="goToReports" class="button-a">Reports</button>
+      <button type="button" @click="goToMembers" class="button-a">Members</button>
     </div>
     <RouterView :id="props.id"></RouterView>
 

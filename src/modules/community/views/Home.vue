@@ -24,9 +24,12 @@ onBeforeMount(async () => {
 
 <template>
   <div v-if="currentUser">
-    <p class="flex flex-row flex-center font-medium text-2xl gap-2 justify-center flex-wrap"><span
-        class="italic font-bold">{{ getPhrase('welcome') }}</span> @{{ currentUser?.displayName }}</p>
-    
+     <div class="w-full flex flex-row justify-center">
+        <h1 class="text-big-a text-center">
+          <span class="text-epic-color-a">{{ getPhrase('welcome') }}</span>
+          @{{ currentUser.displayName }}
+        </h1>
+      </div>
      <CommunityList class="mt-4"></CommunityList> 
     
   </div>

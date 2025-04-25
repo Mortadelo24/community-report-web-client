@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Button from '@/components/Button.vue'
 import { useCommunityStore } from '../../stores/community';
 import { storeToRefs } from 'pinia';
 
@@ -11,15 +10,14 @@ const {community} = storeToRefs(communityStore);
 
 <template>
 <div>
-  {{ community?.id }}
       <select>
         <option value="">
-          Opcion 1
+          {{ community?.id }}
         </option>
         <option value="fadf">
           option 2
         </option>
       </select>
-      <Button>Enviar</Button> 
+      <button type="button" class="button-a">Enviar</button> 
     </div>
 </template>
