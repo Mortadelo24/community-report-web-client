@@ -4,7 +4,7 @@ class User{
     constructor(
         public displayName: string,
         public email: string,
-        public id: number 
+        public id: string
     ){}
 
     public getCommunitiesJoined(){

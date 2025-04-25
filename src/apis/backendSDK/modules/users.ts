@@ -4,7 +4,7 @@ import { Community } from "../entities/community"
 import { parseCommunityList, parseUser } from "../utils"
 
 
-const get = async (id: number): Promise<User | null> => {
+const get = async (id: string): Promise<User | null> => {
     try {
         const data = (await backend.get(`/users/${id}`)).data
         return parseUser(data)
@@ -20,7 +20,7 @@ const getCurrent = async (): Promise<User | null> => {
     return null
 }
 
-const getCommunitiesJoined = async (id: number): Promise<Community[]> => {
+const getCommunitiesJoined = async (id: string): Promise<Community[]> => {
     try {
         const data = (await backend.get(`/users/${id}/communities/joined`)).data
         return parseCommunityList(data);
@@ -28,7 +28,7 @@ const getCommunitiesJoined = async (id: number): Promise<Community[]> => {
 
     return []
 }
-const getCommunitiesOwned = async (id: number): Promise<Community[]> => {
+const getCommunitiesOwned = async (id: string): Promise<Community[]> => {
     try {
         const data = (await backend.get(`/users/${id}/communities/owned`)).data
         return parseCommunityList(data);

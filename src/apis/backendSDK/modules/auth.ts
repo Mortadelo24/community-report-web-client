@@ -8,7 +8,6 @@ let isUserAuthenticated = false;
 
 const authenticateLocalUser = async() => {
     const token = localStorage.getItem('elkit');
-
     config.setAuthenticationToken(token); 
     try {
         await backend.post('/users/token/validate');
@@ -27,7 +26,9 @@ const authenticateUser = async (provider: Provider, token: string) => {
             token_type: 'Bearer',
             provider: provider
         });
-        config.setAuthenticationToken(response.data['access_token']);
+        const accessToken = response.data['access_token']
+        config.setAuthenticationToken(accessToken);
+        localStorage.setItem('elkit', accessToken)
         isUserAuthenticated = true;
     } catch(__){
         throw new Error("could not authenticat the user")

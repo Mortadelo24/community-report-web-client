@@ -16,8 +16,7 @@ const { community } = storeToRefs(communityStore)
 
 onBeforeMount(() => {
   if (!props.id) return
-  const communityId = Number(props.id);
-  communityStore.load(communityId);
+  communityStore.load(props.id);
 })
 onBeforeUnmount(() => {
   communityStore.unLoad();

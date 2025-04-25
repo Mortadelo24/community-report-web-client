@@ -2,7 +2,7 @@ import {getMembers} from '../modules/communities'
 
 class Community{
     constructor(
-        public id: number, 
+        public id: string, 
         public name: string
     ){}
 

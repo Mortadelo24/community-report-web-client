@@ -11,7 +11,7 @@ export const useCommunityStore = defineStore('community', ()=>{
         return backendSDK.communities.create(communityCreate);
     }
 
-    const load = async(id: number) => {
+    const load = async(id: string) => {
         community.value = await backendSDK.communities.get(id);
     }
 

@@ -11,7 +11,7 @@ const create = async (communityCreate: CommunityCreate): Promise<Community> => {
     }
 }
 
-const get = async (id: number): Promise<Community|null> => {
+const get = async (id: string): Promise<Community|null> => {
     try{
         const data = (await backend.get(`communities/${id}`)).data;
         return parseCommunity(data)
@@ -20,7 +20,7 @@ const get = async (id: number): Promise<Community|null> => {
     return null
 }
 
-const getMembers = async (id: number): Promise<User[]> => {
+const getMembers = async (id: string): Promise<User[]> => {
     try{
         const data = (await backend.get(`communities/${id}/members`)).data;
         return parseUserList(data)
