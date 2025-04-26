@@ -20,20 +20,24 @@ const createNewCommunity = async () => {
         const community = await communityStore.create(newCommunity);
         router.push({ name: 'community', params: { id: community.id } })
     } catch (__) {
-       useGlobalStore().setError("Could not create the community"); 
+        useGlobalStore().setError("Could not create the community");
     }
 }
 </script>
 <template>
-    <div class="container-b flex flex-col gap-4 p-2">
-        <p class="font-bold text-xl">Create a Community</p>
-        <div class="flex flex-col">
-            <p class="font-semibold">Name</p>
-            <input type="text" v-model="newCommunityName" class="w-full mt-1 input-a" placeholder="Comunidad martinez"></input>
-        </div>
-        <div class="w-full flex flex-row gap-2 justify-end">
-            <button @click="createNewCommunity" class="w-1/2 button-a">Create</button>
+    <div class="flex flex-col items-center justify-center">
 
+        <div class="container-b flex flex-col gap-6 p-2 max-w-md">
+            <p class="font-bold text-xl">Create a Community</p>
+            <div class="flex flex-col">
+                <p class="font-semibold">Name</p>
+                <input type="text" v-model="newCommunityName" class="w-full mt-1 input-a"
+                    placeholder="Comunidad martinez"></input>
+            </div>
+            <div class="w-full flex flex-row gap-2 justify-end">
+                <button @click="createNewCommunity" class="w-1/2 button-a">Create</button>
+
+            </div>
         </div>
     </div>
 </template>

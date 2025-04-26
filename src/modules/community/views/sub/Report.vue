@@ -9,7 +9,7 @@ const {community} = storeToRefs(communityStore);
 </script>
 
 <template>
-<div class="container-b flex flex-row gap-2 flex-wrap">
+<div class="container-b flex flex-row gap-2 flex-wrap max-w-lg">
       <select class="select-a">
         <option value="">
           {{ community?.id }}

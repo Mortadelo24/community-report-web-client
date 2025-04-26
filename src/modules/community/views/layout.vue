@@ -18,7 +18,7 @@ const logOut = () => {
     <button v-else @click="logOut" class="button-a">Log out</button>
     <LanguageSelect></LanguageSelect>
   </nav>
-  <div>
+  <div class="p-4">
     <RouterView></RouterView> 
   </div>
 </template>

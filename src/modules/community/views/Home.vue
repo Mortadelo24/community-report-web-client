@@ -30,7 +30,7 @@ onBeforeMount(async () => {
           @{{ currentUser.displayName }}
         </p>
       </div>
-     <CommunityList class="my-4 mx-2"></CommunityList> 
+     <CommunityList ></CommunityList> 
   </div>
   <div v-else>
     This is an error

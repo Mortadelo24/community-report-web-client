@@ -54,6 +54,14 @@ html, body {
   @apply flex flex-row items-center justify-center text-white w-full bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55
 }
 
+.button-group-container{
+  @apply inline-flex rounded-md shadow-xs
+}
+
+.button-group-item{
+  @apply first:rounded-l-lg last:rounded-r-lg px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white
+}
+
 .nav-bar-item-a{
   @apply block py-2 px-3 text-white  rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500
 }
