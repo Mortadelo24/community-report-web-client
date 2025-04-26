@@ -37,6 +37,7 @@ const authenticateUser = async (provider: Provider, token: string) => {
 
 const logout = ()=>{
     config.setAuthenticationToken(null);
+    localStorage.removeItem('elkit')
     isUserAuthenticated = false;
 }
 

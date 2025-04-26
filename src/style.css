@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/*@custom-variant dark (&:where(.dark, .dark *)); */
+
+
 html, body {
   @apply bg-white text-black dark:text-white dark:bg-gray-900 antialiased h-full
 }
@@ -15,7 +18,7 @@ html, body {
 }
 
 .button-a{
-  @apply  cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
+  @apply  cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800
 }
 
 .input-a{
@@ -23,11 +26,14 @@ html, body {
 }
 
 .container-a{
-  @apply relative bg-white rounded-lg shadow-sm dark:bg-gray-700
+  @apply relative bg-neutral-50 rounded-lg shadow-sm dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600
+}
+.container-b{
+  @apply w-full p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700
 }
 
 .list-container-item{
-  @apply  cursor-pointer    relative inline-flex items-center w-full px-4 py-4 text-sm font-medium border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white
+  @apply  cursor-pointer py-6 px-6  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700
 
 }
 
@@ -39,7 +45,7 @@ html, body {
 }
 
 .select-a{
-  @apply block p-2 mb-6 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+  @apply block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
 }
 
 .button-google-sign{

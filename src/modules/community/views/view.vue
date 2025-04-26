@@ -29,7 +29,7 @@ const goToMembers = () => {
 </script>
 <template>
   <div v-if="community" class="flex flex-col gap-2">
-    <p class="text-center text-bold text-2xl m-4">{{ community?.name }}</p>
+    <p class="text-big-a text-center m-4">{{ community?.name }}</p>
     <div class="flex flex-row gap-2">
       <button type="button" @click="goToReports" class="button-a">Reports</button>
       <button type="button" @click="goToMembers" class="button-a">Members</button>

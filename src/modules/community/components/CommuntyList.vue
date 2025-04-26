@@ -24,7 +24,7 @@ onBeforeMount(async()=>{
             <button type="button" @click="router.push({name: 'communityCreate'})" class="button-a">Create</button>
         </div>
 
-        <div class="flex flex-col gap-2 mt-2 p-4 min-h-80 container-a">
+        <div class="flex flex-col gap-2 mt-2 p-4 min-h-80 container-b">
             <CommunityListItem v-if="communitiesJoined.length > 0" v-for="community in communitiesJoined" :community="community" ref="community.id">
             </CommunityListItem>
             <div v-else class="h-full w-full text-center bold text-xl">

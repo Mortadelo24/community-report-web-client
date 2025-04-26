@@ -25,13 +25,15 @@ onBeforeMount(async () => {
 <template>
   <div v-if="currentUser">
      <div class="w-full flex flex-row justify-center">
-        <h1 class="text-big-a text-center">
-          <span class="text-epic-color-a">{{ getPhrase('welcome') }}</span>
+        <p class="text-big-a text-center my-4 select-all">
+          <span class="text-epic-color-a select-none">{{ getPhrase('welcome') }}</span>
           @{{ currentUser.displayName }}
-        </h1>
+        </p>
       </div>
-     <CommunityList class="mt-4"></CommunityList> 
-    
+     <CommunityList class="my-4 mx-2"></CommunityList> 
+  </div>
+  <div v-else>
+    This is an error
   </div>
 
 </template>

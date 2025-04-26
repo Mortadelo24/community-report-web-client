@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia';
 import { useAuthStore } from '../../../stores/auth.ts'
 import { router } from '../../../router/index.ts';
 const authStore = useAuthStore();
-const { logIn, logOut } = authStore;
+const { logIn} = authStore;
 const { isAuthenticated } = storeToRefs(authStore);
 
 const signIn = async () => {
@@ -24,6 +24,5 @@ const signIn = async () => {
       </svg>
       Sign in with Google
     </button>
-    <button v-else @click="logOut" class="button-a">Log out</button>
-  </div>
+      </div>
 </template>

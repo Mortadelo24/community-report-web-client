@@ -25,7 +25,7 @@ const createNewCommunity = async () => {
 }
 </script>
 <template>
-    <div class="flex flex-col gap-4 p-2">
+    <div class="container-b flex flex-col gap-4 p-2">
         <p class="font-bold text-xl">Create a Community</p>
         <div class="flex flex-col">
             <p class="font-semibold">Name</p>
