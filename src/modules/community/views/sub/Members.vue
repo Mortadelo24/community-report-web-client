@@ -20,7 +20,7 @@ onBeforeMount(async () => {
       <div class="divide-y divide-gray-200 dark:divide-gray-700">
 
         <div v-for="member in members" class="py-3 sm:py-4 flex items-center">
-          <div class="shrink-0">
+          <div class="shrink-0 select-none">
             <img src="https://images-ext-1.discordapp.net/external/tpcGiZRG0Oaa3ZnSZPgMbftsq9PXi14aEx3V9PBS1oE/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/624821008641032212/478aed10d6e00bec7791c21edbde27c4.png" alt="avatar" class="w-8 h-8 rounded-full">
           </div>
             <div class="flex-1 min-w-0 ms-3">
