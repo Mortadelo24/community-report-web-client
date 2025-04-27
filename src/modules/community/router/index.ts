@@ -19,7 +19,7 @@ const communityRouter = {
         {
             path: '/communities/:id',
             name: 'community',
-            component: () => import('../views/view.vue'),
+            component: () => import('../views/View.vue'),
             props: true,
             children: [
                 {
