@@ -15,6 +15,7 @@ onBeforeMount(async () => {
   <div class="container-b max-w-md">
     <div class="flex items-center justify-between mb-4">
       <p class="text-xl font-bold leading-none text-gray-900 dark:text-white">Members</p>
+      <button class="button-a">Invite</button>
     </div>
     <div class="flow-root">
       <div class="divide-y divide-gray-200 dark:divide-gray-700">

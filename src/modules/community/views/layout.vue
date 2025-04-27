@@ -10,6 +10,8 @@ const logOut = () => {
   authStore.logOut()
   router.push({ name: 'auth' })
 }
+
+
 </script>
 <template>
   <nav class="flex p-2 gap-2 items-center ">

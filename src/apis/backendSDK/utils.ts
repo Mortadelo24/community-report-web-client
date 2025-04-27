@@ -1,6 +1,8 @@
 import { Community } from "./entities/community"
+import { Report } from "./entities/report"
 import { User } from "./entities/user"
 
+// Todo create a generic function for lists
 
 const parseCommunity = (rawCommunity: any) => {
     return new Community(
@@ -29,7 +31,18 @@ const parseUserList = (rawUserList: any[]) =>{
     })
 }
 
+const parseReport = (rawReport: any) =>{
+    return new Report(
+        rawReport['id'],
+        rawReport['complaint']
+    )
+}
 
+const parseReportList = (rawReportList: any[]) =>{
+    return rawReportList.map((rawReport: any)=>{
+        return parseReport(rawReport)
+    })
+}
 
 export {
     parseCommunityList,
@@ -37,4 +50,7 @@ export {
     
     parseUserList,
     parseUser,
+
+    parseReport,
+    parseReportList
 }
