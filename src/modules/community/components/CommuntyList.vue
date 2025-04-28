@@ -18,7 +18,7 @@ onBeforeMount(async()=>{
 
 </script>
 <template>
-    <div >
+    <div  class="max-w-md w-full">
         <div class="flex flex-row justify-between">
             <p class="text-xl font-medium">{{ getPhrase('communityListTitle') }}</p>
             <button type="button" @click="router.push({name: 'communityCreate'})" class="button-a">Create</button>

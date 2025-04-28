@@ -4,7 +4,7 @@
   const { community }  = defineProps<{community: Community}>();
   
   const goToCommunity = () => {
-   router.push({name: 'communityReports', params: {id: community.id}}) 
+   router.push({name: 'community', params: {id: community.id}}) 
   }
 </script>
 <template>

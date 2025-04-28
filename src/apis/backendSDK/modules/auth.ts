@@ -31,7 +31,7 @@ const authenticateUser = async (provider: Provider, token: string) => {
         localStorage.setItem('elkit', accessToken)
         isUserAuthenticated = true;
     } catch(__){
-        throw new Error("could not authenticat the user")
+        throw new Error("could not authenticate the user")
     }
 }
 

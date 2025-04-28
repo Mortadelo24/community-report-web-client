@@ -1,0 +1,36 @@
+<script setup lang="ts">
+import { useCommunityStore } from '../../stores/community';
+import { storeToRefs } from 'pinia';
+import { onBeforeMount } from 'vue';
+
+const communityStore = useCommunityStore();
+const { invitations } = storeToRefs(communityStore)
+
+const createInvitation = async () => {
+    const community = communityStore.community
+    if (!community) return
+    await communityStore.createInvitation();
+    await communityStore.loadInvitations(); 
+}
+onBeforeMount(async () => {
+    await communityStore.loadInvitations();
+})
+</script>
+<template>
+    <div class="container-b max-w-xl">
+        <button @click="createInvitation" class="button-a">Create Invitation</button>
+        <div class="flow-root">
+            <div class="divide-y divide-gray-200 dark:divide-gray-700">
+
+                <div v-for="invitation in invitations" class="py-3 sm:py-4 flex items-center">
+                    <div class="flex-1 min-w-0 ms-3">
+                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            {{ invitation.id }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>

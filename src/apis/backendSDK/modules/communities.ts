@@ -1,7 +1,8 @@
 import { Community, User, type CommunityCreate } from '@/apis/backendSDK/index.ts';
 import { backend } from '../config';
-import { parseCommunity, parseReportList, parseUserList } from '../utils';
+import { parseCommunity, parseInvitation, parseReport, parseUser} from '../utils';
 import type { Report } from '../entities/report';
+import type {Invitation} from '../entities/invitation'
 
 const create = async (communityCreate: CommunityCreate): Promise<Community> => {
     try{
@@ -24,7 +25,7 @@ const get = async (id: string): Promise<Community|null> => {
 const getMembers = async (id: string): Promise<User[]> => {
     try{
         const data = (await backend.get(`communities/${id}/members`)).data;
-        return parseUserList(data)
+        return data.map(parseUser)
     }catch(__){}
 
     return []
@@ -37,7 +38,20 @@ const getReports = async (id:string): Promise<Report[]> =>{
                 community_id: id
             }
         })).data
-        return parseReportList(data)
+        return data.map(parseReport);
+    }catch(__){}
+
+    return []
+}
+
+const getInvitations = async (community_id: string): Promise<Invitation[]> => {
+    try{
+        const data = (await backend.get('invitations',{
+            params: {
+                community_id
+            }
+        })).data
+        return data.map(parseInvitation);
     }catch(__){}
 
     return []
@@ -47,5 +61,6 @@ export {
     create,
     get,
     getMembers,
-    getReports
+    getReports,
+    getInvitations
 }

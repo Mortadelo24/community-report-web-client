@@ -18,6 +18,7 @@ export const useAuthStore = defineStore('auth', ()=>{
     try{
       await backendSDK.auth.authenticateUser('google', firebaseToken)
       isAuthenticated.value = true;
+      await loadCurrentUser();
     } catch(__){
       console.error("There is a problem with the authentication")
     }
@@ -28,12 +29,17 @@ export const useAuthStore = defineStore('auth', ()=>{
     isAuthenticated.value = false;
     currentUser.value = null;
   }
+
+
   const loadCurrentUser = async() => {
     currentUser.value = await backendSDK.users.getCurrent();
   }
  
   const initialize = async()=>{
     isAuthenticated.value = backendSDK.auth.isAuthenticated();
+
+
+    if (isAuthenticated.value) await loadCurrentUser();
   }
   const authenticateLocalUser = async()=>{
         await backendSDK.auth.authenticateLocalUser();

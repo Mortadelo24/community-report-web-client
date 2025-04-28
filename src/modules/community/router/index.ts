@@ -20,6 +20,9 @@ const communityRouter = {
             path: '/communities/:id',
             name: 'community',
             component: () => import('../views/View.vue'),
+            redirect: () => {
+                return {name: 'communityReports'}
+            },
             props: true,
             children: [
                 {
@@ -31,6 +34,11 @@ const communityRouter = {
                     path: 'reports',
                     name: 'communityReports',
                     component: () => import('../views/sub/Report.vue')
+                },  
+                {
+                    path: 'invitations',
+                    name: 'communityInvitations',
+                    component: () => import('../views/sub/Invitations.vue')
                 }
             ]
         },

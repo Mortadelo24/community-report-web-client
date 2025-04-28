@@ -1,9 +1,10 @@
-import {getMembers, getReports} from '../modules/communities'
+import {getMembers, getReports, getInvitations} from '../modules/communities'
 
 class Community{
     constructor(
         public id: string, 
-        public name: string
+        public name: string,
+        public ownerId: string
     ){}
 
     public getMembers(){
@@ -11,6 +12,9 @@ class Community{
     }
     public getReports(){
         return getReports(this.id)
+    }
+    public getInvitations(){
+        return getInvitations(this.id)
     }
 }
 
