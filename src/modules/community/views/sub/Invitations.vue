@@ -22,7 +22,7 @@ onBeforeMount(async () => {
         <div class="flow-root">
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
 
-                <div v-for="invitation in invitations" class="py-3 sm:py-4 flex items-center">
+                <div v-for="invitation in invitations" :key="invitation.id"  class="py-3 sm:py-4 flex items-center">
                     <div class="flex-1 min-w-0 ms-3">
                         <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
                             {{ invitation.id }}
