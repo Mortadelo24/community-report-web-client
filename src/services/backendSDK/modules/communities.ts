@@ -1,4 +1,4 @@
-import { Community, User, type CommunityCreate } from '@/apis/backendSDK/index.ts';
+import { Community, User, type CommunityCreate } from '@/services';
 import { backend } from '../config';
 import { parseCommunity, parseInvitation, parseReport, parseUser} from '../utils';
 import type { Report } from '../entities/report';

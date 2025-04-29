@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import { router } from './router/index'
 import { useLanguageStore } from './stores/language'
 import { useGlobalStore } from './stores/global'
-import {backendSDK} from './apis/backendSDK'
+import {backendSDK} from './services/backendSDK'
 import { useAuthStore } from './stores'
 
 import './style.css'

@@ -1,7 +1,6 @@
 import {defineStore} from 'pinia'
-import { backendSDK, Community, User, Invitation, Report } from '@/apis/backendSDK'
+import { backendSDK, Community, User, Invitation, Report, type CommunityCreate } from '@/services/backendSDK'
 import  {ref} from 'vue'
-import { type CommunityCreate } from '@/apis/backendSDK/index.ts';
 import { useUserStore } from '../stores';
 
 const communityError = new Error('There is no community');

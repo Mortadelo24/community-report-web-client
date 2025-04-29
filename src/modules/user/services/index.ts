@@ -1,4 +1,4 @@
-export  *  from "@/apis/backendSDK";
+export  *  from "@/services/backendSDK";
 export * as firebase from './firebase'
 
 

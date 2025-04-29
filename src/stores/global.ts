@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { backendSDK, Community } from '@/apis/backendSDK/index.ts'
+import { backendSDK, Community } from '@/services'
 import { useAuthStore } from '@/stores'
 
 export const useGlobalStore = defineStore('general', () => {
