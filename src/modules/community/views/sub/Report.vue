@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useCommunityStore } from '../../stores/community';
 import { storeToRefs } from 'pinia';
-import { backendSDK } from '@/apis/backendSDK';
 import { complaints } from '@/assets/commonComplains.json'
 import { onBeforeMount, ref } from 'vue'
+import { useGlobalStore } from '@/stores/global';
 
 
 const communityStore = useCommunityStore();
@@ -13,7 +13,12 @@ const complaint = ref<string>(complaints[0]);
 // Todo: Remove the backendSDK from this component
 const createReport = async () => {
   if (!community.value) return
-  await backendSDK.reports.create(community.value.id, complaint.value);
+  try{
+  await communityStore.createReport(complaint.value)
+  }catch(__){
+    useGlobalStore().errorMessage = "Cannot create the complaint"
+  }
+
   await communityStore.loadReports();
 }
 

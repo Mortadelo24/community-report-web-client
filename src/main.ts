@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { router } from './router/index'
-import { useAuthStore } from './stores/auth'
 import { useLanguageStore } from './stores/language'
 import { useGlobalStore } from './stores/global'
 import {backendSDK} from './apis/backendSDK'
+import { useAuthStore } from './stores'
 
 import './style.css'
 import App from './App.vue'

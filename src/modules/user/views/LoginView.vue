@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { useAuthStore } from '../../../stores/auth.ts'
-import { router } from '../../../router/index.ts';
+import { useAuthStore } from '../stores';
 import Alert from '@/components/Alert.vue';
+import { useRouter } from 'vue-router';
+
 const authStore = useAuthStore();
-const { logIn } = authStore;
-
+const router = useRouter();
 const signIn = async () => {
-  await logIn();
-
+  await authStore.login();
+  
   router.push({ name: 'home' })
+  
 }
 
 </script>

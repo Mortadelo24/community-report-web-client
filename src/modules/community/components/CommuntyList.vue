@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { useLanguageStore } from '@/stores/language';
-import { useGlobalStore } from '@/stores/global';
+import {useLanguageStore, useUserStore} from '../stores'
 import { storeToRefs } from 'pinia';
 import CommunityListItem from './CommunityListItem.vue';
 import { onBeforeMount } from 'vue';
-import { router } from '@/router';
-const globalStore = useGlobalStore()
+
+const userStore = useUserStore()
 
 const { getPhrase } = useLanguageStore();
-const { communitiesJoined } = storeToRefs(globalStore);
-const {loadCurrentUserCommunitiesJoined} = globalStore;
+const { communitiesJoined } = storeToRefs(userStore);
 
 onBeforeMount(async()=>{
-    await loadCurrentUserCommunitiesJoined();
+    await userStore.loadCommunitiesJoined();
 })
 
 
@@ -21,7 +19,7 @@ onBeforeMount(async()=>{
     <div  class="max-w-md w-full">
         <div class="flex flex-row justify-between">
             <p class="text-xl font-medium">{{ getPhrase('communityListTitle') }}</p>
-            <button type="button" @click="router.push({name: 'communityCreate'})" class="button-a">Create</button>
+            <router-link :to="{name: 'communityCreate'}" class="button-a">Create</router-link>
         </div>
 
         <div class="flex flex-col gap-2 mt-2 p-4 min-h-80 container-b">

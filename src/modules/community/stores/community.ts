@@ -2,10 +2,12 @@ import {defineStore} from 'pinia'
 import { backendSDK, Community, User, Invitation, Report } from '@/apis/backendSDK'
 import  {ref} from 'vue'
 import { type CommunityCreate } from '@/apis/backendSDK/index.ts';
-import { useAuthStore } from '@/stores/auth';
+import { useUserStore } from '../stores';
+
+const communityError = new Error('There is no community');
 
 export const useCommunityStore = defineStore('community', ()=>{
-    const authStore = useAuthStore(); 
+    const userStore = useUserStore(); 
     
     const community = ref<Community|null>(null);
     const members = ref<User[]>([]);
@@ -18,17 +20,19 @@ export const useCommunityStore = defineStore('community', ()=>{
     }
 
     const createInvitation = async()=>{
-        if (!community.value) {
-            throw new Error('There is no community')
-        }
+        if (!community.value) throw communityError;
         return await backendSDK.invitations.create(community.value.id);
+    }
+    const createReport = async(complaint: string) =>{
+        if (!community.value) throw communityError;
+        return await backendSDK.reports.create(community.value.id, complaint)
     }
 
     const load = async(id: string) => {
         community.value = await backendSDK.communities.get(id);
         if (!community.value) throw new Error('The community was not found')
 
-        const currentUser = authStore.currentUser;       
+        const currentUser = userStore.user;       
         isOwner.value = !!(currentUser && currentUser.id == community.value.ownerId);
     }
 
@@ -66,6 +70,7 @@ export const useCommunityStore = defineStore('community', ()=>{
         loadInvitations,
         loadReports,
         createInvitation,
+        createReport,
         join,
         community,
         members,

@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import { authRouter } from '../modules/auth/router'
 import { communityRouter } from '../modules/community/router/index.ts'
-import { useAuthStore } from '../stores/auth.ts'
+import { userRouter } from '@/modules/user/router/index.ts'
+import { useAuthStore } from  '@/stores'
+
 
 const routes = [
   {
@@ -10,8 +11,8 @@ const routes = [
     ...communityRouter
   },
   {
-    path: '/auth',
-    ...authRouter
+    path: '/users',
+    ...userRouter
   },
   {
     path: '/:pathMatch(.*)*',
@@ -32,7 +33,7 @@ router.beforeEach(async (to, __) => {
 
   if (to.meta.requiresAuth && !useAuthStore().isAuthenticated) {
     return {
-      name: 'logIn'
+      name: 'login'
     }
   }
 })

@@ -1,9 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { backendSDK, Community } from '@/apis/backendSDK/index.ts'
-import { useAuthStore } from './auth.ts'
+import { useAuthStore } from '@/stores'
 
 export const useGlobalStore = defineStore('general', () => {
+  const authStore = useAuthStore();  
+ 
+  // init 
   const communitiesJoined = ref<Community[]>([]);
   const communitiesOwned = ref<Community[]>([]);
   const isServerUp = ref(true);
@@ -19,7 +22,7 @@ export const useGlobalStore = defineStore('general', () => {
   const checkIfServerIsUp = async () => {
     if (await backendSDK.checkServerHealth()) {
       if (!isServerUp.value) {
-        await useAuthStore().authenticateLocalUser();
+        await authStore.authenticateLocalUser();
       }
       isServerUp.value = true;
     } else {
@@ -30,18 +33,6 @@ export const useGlobalStore = defineStore('general', () => {
 
   
 
-  const loadCurrentUserCommunitiesJoined = async () => {
-    const {currentUser} = useAuthStore();
-    if (!currentUser) return
-    communitiesJoined.value = await currentUser.getCommunitiesJoined();
-  }
-
-  const loadCurrentUserOwnedCommunities = async () => {
-    const currentUser = useAuthStore().currentUser;
-    if (!currentUser) return
-
-  }
-   
   
 
   const initialize = () => {
@@ -54,9 +45,7 @@ export const useGlobalStore = defineStore('general', () => {
     communitiesJoined,
     communitiesOwned,
     isServerUp,
-    loadCurrentUserCommunitiesJoined,
-    loadCurrentUserOwnedCommunities,
-    checkIfServerIsUp,
+   checkIfServerIsUp,
     initialize,
     errorMessage,
     setError
