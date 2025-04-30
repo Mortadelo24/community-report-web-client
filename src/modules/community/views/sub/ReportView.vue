@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import {useGlobalStore} from '@/stores'
 import { useCommunityStore } from '../../stores';
 import { storeToRefs } from 'pinia';
 import { complaints } from '@/assets/commonComplains.json'
 import { onBeforeMount, ref } from 'vue'
+import { useNotificationStore } from '@/stores';
 
 
 const communityStore = useCommunityStore();
+const notificationStore = useNotificationStore();
 const { community, isOwner, reports } = storeToRefs(communityStore);
 const complaint = ref<string>(complaints[0]);
 
@@ -16,7 +17,7 @@ const createReport = async () => {
   try{
   await communityStore.createReport(complaint.value)
   }catch(__){
-    useGlobalStore().errorMessage = "Cannot create the complaint"
+    notificationStore.showError("Cannot create the complaint")
   }
 
   await communityStore.loadReports();

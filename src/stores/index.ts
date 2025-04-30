@@ -1,4 +1,3 @@
-
+export { useNotificationStore } from './notification';
 export { useBackendStore } from './backend';
-export { useGlobalStore } from './global';
-export {useLanguageStore} from './language'
+export {useLanguageStore} from './language';

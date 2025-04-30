@@ -1,20 +1,17 @@
 <script setup lang="ts">
-import { useGlobalStore } from '@/stores/global'
 import Modal from '@/components/Modal.vue'
+import { useNotificationStore } from '@/stores';
 import { storeToRefs } from 'pinia';
 
-const globalStore = useGlobalStore();
-const {errorMessage} = storeToRefs(globalStore);
+const notificationStore = useNotificationStore();
+const {isNotificationOpen, message} = storeToRefs(notificationStore);
 
-const clearErrorMessage = () => {
-    errorMessage.value = null;
-}
 </script>
 
 <template>
-    <Modal v-if="errorMessage" :closable="true">
-        <p class="font-bold">{{ errorMessage }}</p>
-        <button type="button" @click="clearErrorMessage" class="button-a">Ok</button>
+    <Modal v-if="isNotificationOpen" :closable="true">
+        <p class="font-bold">{{ message }}</p>
+        <button type="button" @click="notificationStore.closeNotification" class="button-a">Ok</button>
     </Modal>
 
 </template>

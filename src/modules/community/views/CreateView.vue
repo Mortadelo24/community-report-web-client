@@ -4,9 +4,10 @@
 import { router } from '@/router'
 import { ref } from 'vue'
 import { useCommunityStore } from '../stores/community';
-import { useGlobalStore } from '@/stores';
+import { useNotificationStore } from '@/stores';
 
 
+const notificationStore = useNotificationStore();
 const communityStore = useCommunityStore();
 const newCommunityName = ref("");
 
@@ -20,7 +21,7 @@ const createNewCommunity = async () => {
         const community = await communityStore.create(newCommunity);
         router.push({ name: 'community', params: { id: community.id } })
     } catch (__) {
-        useGlobalStore().setError("Could not create the community");
+        notificationStore.showError("Could not create the community");
     }
 }
 </script>

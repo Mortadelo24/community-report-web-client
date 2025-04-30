@@ -2,10 +2,12 @@
 import { ref } from 'vue';
 import { useCommunityStore } from '../stores/community';
 import { router } from '@/router';
-import { useGlobalStore } from '@/stores/global';
+import { useNotificationStore } from '@/stores';
+
+
 
 const communityStore = useCommunityStore();
-const globalStore = useGlobalStore();
+const notificationStore = useNotificationStore();
 
 const invitationId = ref("");
 
@@ -17,7 +19,7 @@ const joinCommunity = async () => {
         const community = await communityStore.join(invitationId.value);
         router.push({ name: 'community', params: { id: community.id } })
     } catch (__) {
-        globalStore.errorMessage = "Invalid Invitation code";
+        notificationStore.showError("You cannot use this invitaion code")
     }
 
     invitationId.value = "";

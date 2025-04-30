@@ -4,7 +4,7 @@ import { useAuthStore } from "@/modules/user/stores";
 import { ref } from 'vue'
 
 
-export const useBackendStore = defineStore('backendStore', () => {
+export const useBackendStore = defineStore('backend', () => {
   const authStore = useAuthStore();
 
   const isServerUp = ref(true);
