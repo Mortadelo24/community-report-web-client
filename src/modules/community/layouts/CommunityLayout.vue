@@ -19,10 +19,15 @@ const logOut = () => {
   <nav class="flex p-2 gap-2 items-center ">
     <RouterLink exact-active-class="hidden" v-if="isAuthenticated" class="button-a" to="/">Home</RouterLink>
     <RouterLink v-if="!isAuthenticated" class="button-a" :to="{ name: 'login' }">Login</RouterLink>
-    <button v-else @click="logOut" class="button-a">Log out</button>
+    <button v-else @click="logOut" type="button" class=" gap-2 button-a flex justify-center items-center">
+      <p class="hidden md:block">Lo out</p>
+      <span class="material-symbols-outlined">
+        logout
+      </span>
+    </button>
     <LanguageSelect></LanguageSelect>
   </nav>
   <div class="p-4">
-    <RouterView></RouterView> 
+    <RouterView></RouterView>
   </div>
 </template>

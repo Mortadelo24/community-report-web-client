@@ -2,7 +2,7 @@
 import { onBeforeMount } from 'vue'
 import { useLanguageStore } from './stores/language.ts'
 import ServerDown from './components/ServerDown.vue';
-import ErrorModal from './components/ErrorModal.vue';
+import ErrorModal from './components/modalAlerts/ErrorModal.vue'
 
 const { loadLanguagePack } = useLanguageStore();
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '../stores';
-import Alert from '@/components/Alert.vue';
+import Alert from '@/components/alerts/Alert.vue';
 import { useRouter } from 'vue-router';
 
 const authStore = useAuthStore();
