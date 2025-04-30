@@ -4,6 +4,7 @@ import { useUserStore } from '@/modules/user/stores';
 import { storeToRefs } from 'pinia';
 import CommunityListItem from './CommunityListItem.vue';
 import { onBeforeMount, ref } from 'vue';
+import Button from '@/modules/element/components/Button.vue';
 
 const userStore = useUserStore()
 
@@ -24,7 +25,9 @@ onBeforeMount(async () => {
     <div class="max-w-md w-full">
         <div class="flex flex-row justify-between">
             <p class="text-xl font-medium">{{ getPhrase('communityListTitle') }}</p>
-            <router-link :to="{ name: 'communityCreate' }" class="button-a">Create</router-link>
+            <router-link :to="{ name: 'communityCreate' }" >
+                <Button color="cyan">create</Button>
+            </router-link>
         </div>
 
         <div class=" mt-2 p-4 min-h-80 container-b ">

@@ -15,7 +15,9 @@ onBeforeMount(async () => {
   <div class="container-b max-w-md">
     <div class="flex items-center justify-between mb-4">
       <p class="text-a">Members</p>
-      <RouterLink :to="{name: 'communityInvitations'}" class="button-a">Invite</RouterLink>
+      <RouterLink :to="{name: 'communityInvitations'}">
+        <Button color="green">Invite</Button>
+      </RouterLink>
     </div>
     <div class="flow-root">
       <div class="divide-y divide-gray-200 dark:divide-gray-700">

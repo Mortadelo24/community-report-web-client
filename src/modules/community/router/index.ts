@@ -5,7 +5,7 @@ const communityRouter = {
     children: [
 
         {
-            path: '/',
+            path: '',
             name: 'home',
             component: () => import('../views/HomeView.vue')
 

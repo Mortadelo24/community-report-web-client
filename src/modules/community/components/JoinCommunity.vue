@@ -5,7 +5,6 @@ import { router } from '@/router';
 import { useNotificationStore } from '@/stores';
 
 
-
 const communityStore = useCommunityStore();
 const notificationStore = useNotificationStore();
 
@@ -36,7 +35,8 @@ const joinCommunity = async () => {
                 <input v-model="invitationId" placeholder="eg. 3fa85f64-5717-4562-b3fc-2c963f66afa6"
                     class="input-a w-full mt-2" type="text">
             </div>
-            <button class="button-a" type="submit">Join</button>
+            <Button type="submit">Join</Button>
+            
         </form>
     </div>
 </template>

@@ -1,6 +1,11 @@
 
 const userRouter = {
     component: () => import('../layouts/AuthLayout.vue'),
+    redirect: ()=>{
+        return {
+            name: 'login'
+        }
+    },
     children: [
         {
             path: 'login',

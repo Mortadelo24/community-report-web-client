@@ -5,8 +5,6 @@ import { router } from '@/router'
 import { ref } from 'vue'
 import { useCommunityStore } from '../stores/community';
 import { useNotificationStore } from '@/stores';
-
-
 const notificationStore = useNotificationStore();
 const communityStore = useCommunityStore();
 const newCommunityName = ref("");
@@ -36,7 +34,7 @@ const createNewCommunity = async () => {
                     placeholder="Comunidad martinez"></input>
             </div>
             <div class="w-full flex flex-row gap-2 justify-end">
-                <button type="submit" class="w-1/2 button-a">Create</button>
+                <Button type="submit" color="cyan" >create</Button>
 
             </div>
         </form>

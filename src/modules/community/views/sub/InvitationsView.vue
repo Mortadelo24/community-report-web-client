@@ -18,7 +18,7 @@ onBeforeMount(async () => {
 </script>
 <template>
     <div class="container-b max-w-xl">
-        <button @click="createInvitation" class="button-a">Create Invitation</button>
+        <Button color="blue" @click="createInvitation">Create</Button>
         <div class="flow-root">
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
 

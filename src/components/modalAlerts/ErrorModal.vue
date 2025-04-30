@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Button from '@/modules/element/components/Button.vue';
 import Modal from './Modal.vue';
 import { useNotificationStore } from '@/stores';
 import { storeToRefs } from 'pinia';
@@ -26,9 +27,9 @@ const {isNotificationOpen, message} = storeToRefs(notificationStore);
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                 </svg> 
                 <p class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">{{ message }}</p>
-                <button @click="notificationStore.closeNotification" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                <Button @click="notificationStore.closeNotification" color="red" type="button">
                     Close
-                </button>
+                </Button>
             </div>
         </div>
     </Modal>

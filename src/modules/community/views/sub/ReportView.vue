@@ -5,7 +5,6 @@ import { complaints } from '@/assets/commonComplains.json'
 import { onBeforeMount, ref } from 'vue'
 import { useNotificationStore } from '@/stores';
 
-
 const communityStore = useCommunityStore();
 const notificationStore = useNotificationStore();
 const { community, isOwner, reports } = storeToRefs(communityStore);
@@ -38,11 +37,10 @@ onBeforeMount(async () => {
           {{ complaint }}
         </option>
       </select>
-      <button @click="createReport" type="button" class="button-a">Enviar</button>
+      <Button @click="createReport" color="blue">Send</Button>
     </div>
     <div v-if="isOwner" class="container-b max-w-md">
       <p class="font-semibold text-lg">Reports</p>
-      
       <div  class="flex flex-col gap-2 mt-4 ">
         <div v-for="report in reports" :key="report.id">
           <p>{{ report.complaint }}</p>

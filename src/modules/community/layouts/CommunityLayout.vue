@@ -4,7 +4,6 @@ import { storeToRefs } from 'pinia';
 import LanguageSelect from '@/components/LanguageSelect.vue';
 import { useRouter } from 'vue-router';
 
-
 const authStore = useAuthStore()
 const router = useRouter()
 const { isAuthenticated } = storeToRefs(authStore);
@@ -17,14 +16,22 @@ const logOut = () => {
 </script>
 <template>
   <nav class="flex p-2 gap-2 items-center ">
-    <RouterLink exact-active-class="hidden" v-if="isAuthenticated" class="button-a" to="/">Home</RouterLink>
-    <RouterLink v-if="!isAuthenticated" class="button-a" :to="{ name: 'login' }">Login</RouterLink>
-    <button v-else @click="logOut" type="button" class=" gap-2 button-a flex justify-center items-center">
+    <RouterLink :to="{name: 'home'}">
+      <Button :disabled="$route.name == 'home'" color="blue">
+       Home 
+      </Button>
+    </RouterLink>
+    <RouterLink v-if="!isAuthenticated"  :to="{ name: 'login' }">
+      <Button color="blue">
+        Login
+      </Button>
+    </RouterLink>
+    <Button v-else @click="logOut" type="button" class=" gap-2 flex justify-center items-center">
       <p class="hidden md:block">Lo out</p>
       <span class="material-symbols-outlined">
         logout
       </span>
-    </button>
+    </Button>
     <LanguageSelect></LanguageSelect>
   </nav>
   <div class="p-4"> 

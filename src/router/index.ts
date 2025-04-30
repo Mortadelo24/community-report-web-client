@@ -2,7 +2,8 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import { communityRouter } from '../modules/community/router/index.ts'
 import { userRouter } from '@/modules/user/router/index.ts'
-import { useAuthStore } from '@/modules/user/stores'  
+import { elementRouter } from '@/modules/element/router'
+import { useAuthStore } from '@/modules/user/stores'
 import { useBackendStore } from '@/stores'
 
 const routes = [
@@ -14,6 +15,10 @@ const routes = [
   {
     path: '/users',
     ...userRouter
+  },
+  {
+    path: '/elements',
+    ...elementRouter
   },
   {
     path: '/server-down',
@@ -35,15 +40,15 @@ const router = createRouter({
 
 })
 
-router.beforeEach(async (to, __) =>{
-    if (to.meta.requiresServer && !useBackendStore().isServerUp){
-      return {
-        name: 'serverOffline',
-        query: {
-          redirect: to.path
-        }
+router.beforeEach(async (to, __) => {
+  if (to.meta.requiresServer && !useBackendStore().isServerUp) {
+    return {
+      name: 'serverOffline',
+      query: {
+        redirect: to.path
       }
     }
+  }
 })
 
 router.beforeEach(async (to, __) => {

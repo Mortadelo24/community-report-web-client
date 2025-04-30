@@ -28,9 +28,9 @@ const signIn = async () => {
       <input type="text" class="input-a">
     </label>
     <div class="flex flex-col gap-2">
-      <button class="button-a">Login to your account</button>
+      <Button color="blue">Login to your account</Button>
       <p class="text-center font-medium">Or</p>
-      <button @click="signIn" type="button" class="button-google-sign">
+      <Button color="cyan" @click="signIn" type="button" class="flex justify-center items-center">
         <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
           viewBox="0 0 18 19">
           <path fill-rule="evenodd"
@@ -38,7 +38,7 @@ const signIn = async () => {
             clip-rule="evenodd" />
         </svg>
         Sign in with Google
-      </button>
+      </Button>
     </div>
     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
       Not registered? <button class="text-blue-700 hover:underline dark:text-blue-500 cursor-pointer">Create
