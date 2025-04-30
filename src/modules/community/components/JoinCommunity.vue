@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { useCommunityStore } from '../stores/community';
 import { router } from '@/router';
 import { useNotificationStore } from '@/stores';
-
+import Button from '@/modules/element/components/Button.vue';
 
 const communityStore = useCommunityStore();
 const notificationStore = useNotificationStore();

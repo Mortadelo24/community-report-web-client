@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-
+import Button from '@/modules/element/components/Button.vue';
 import { router } from '@/router'
 import { ref } from 'vue'
 import { useCommunityStore } from '../stores/community';

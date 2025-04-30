@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia';
 import { complaints } from '@/assets/commonComplains.json'
 import { onBeforeMount, ref } from 'vue'
 import { useNotificationStore } from '@/stores';
+import Button from '@/modules/element/components/Button.vue';
 
 const communityStore = useCommunityStore();
 const notificationStore = useNotificationStore();

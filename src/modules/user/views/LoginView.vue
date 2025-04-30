@@ -2,21 +2,22 @@
 import { useAuthStore } from '../stores';
 import Alert from '@/components/alerts/Alert.vue';
 import { useRouter } from 'vue-router';
+import Button from '@/modules/element/components/Button.vue';
 
 const authStore = useAuthStore();
 const router = useRouter();
 const signIn = async () => {
   await authStore.login();
-  
+
   router.push({ name: 'home' })
-  
+
 }
 
 </script>
 <template>
 
   <div class="container-b max-w-md flex flex-col gap-6">
-  
+
     <p class="text-xl font-medium text-gray-900 dark:text-white">Sign in</p>
     <Alert>Only copatible with google login</Alert>
     <label class="flex flex-col gap-2 text-sm font-medium text-gray-900 dark:text-white">

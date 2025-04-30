@@ -2,6 +2,7 @@
 import { storeToRefs } from 'pinia';
 import { useCommunityStore } from '../../stores/community';
 import { onBeforeMount } from 'vue';
+import Button from '@/modules/element/components/Button.vue';
 
 const communityStore = useCommunityStore();
 const { members } = storeToRefs(communityStore);

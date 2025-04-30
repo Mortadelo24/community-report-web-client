@@ -14,6 +14,7 @@ const routes = [
   },
   {
     path: '/users',
+    meta: {requiresServer: true},
     ...userRouter
   },
   {

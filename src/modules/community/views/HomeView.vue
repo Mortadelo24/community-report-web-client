@@ -6,18 +6,12 @@ import {useLanguageStore} from '@/stores'
 import { useUserStore } from '@/modules/user/stores';
 import CommunityList from '../components/CommuntyList.vue'
 import JoinCommunity from '../components/JoinCommunity.vue';
-import { onBeforeMount } from 'vue';
-
 
 const userStore = useUserStore();
 const languageStore = useLanguageStore()
 const {user} = storeToRefs(userStore);
 
 const { getPhrase } = languageStore;
-
-onBeforeMount(async()=>{
-  await useUserStore().loadUser();
-})
 
 </script>
 
