@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { router } from './router/index'
-import { useLanguageStore } from './stores/language'
-import { useGlobalStore } from './stores/global'
 import {backendSDK} from './services/backendSDK'
-import { useAuthStore } from './stores'
+import {useLanguageStore, useBackendStore} from './stores'
+import { useAuthStore } from './modules/user/stores'
+
 
 import './style.css'
 import App from './App.vue'
@@ -21,7 +21,7 @@ const initializeApp = async () => {
     // setup pinia
     app.use(pinia);
     useLanguageStore().loadLanguagePack();
-    useGlobalStore().initialize();
+    useBackendStore().initialize();
     await useAuthStore().initialize();
 
     // seupt others

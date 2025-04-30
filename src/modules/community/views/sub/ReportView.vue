@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useCommunityStore } from '../../stores/community';
+import {useGlobalStore} from '@/stores'
+import { useCommunityStore } from '../../stores';
 import { storeToRefs } from 'pinia';
 import { complaints } from '@/assets/commonComplains.json'
 import { onBeforeMount, ref } from 'vue'
-import { useGlobalStore } from '@/stores/global';
 
 
 const communityStore = useCommunityStore();

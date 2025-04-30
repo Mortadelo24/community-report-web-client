@@ -4,7 +4,7 @@
 import { router } from '@/router'
 import { ref } from 'vue'
 import { useCommunityStore } from '../stores/community';
-import { useGlobalStore } from '@/stores/global';
+import { useGlobalStore } from '@/stores';
 
 
 const communityStore = useCommunityStore();

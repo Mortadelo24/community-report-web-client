@@ -23,9 +23,9 @@ onBeforeUnmount(() => {
   <div v-if="community" class="flex flex-col gap-2">
     <p class="text-big-a text-center m-4">{{ community?.name }}</p>
     <div class="button-group-container">
-      <RouterLink :to="{ name: 'communityReports' }" class="button-group-item">Reports</RouterLink>
-      <RouterLink :to="{ name: 'communityMembers' }" class="button-group-item">Members</RouterLink>
-      <RouterLink v-if="isOwner" :to="{name: 'communityInvitations'}" class="button-group-item">Invitations</RouterLink>
+      <RouterLink active-class="opacity-25" :to="{ name: 'communityReports' }" class="button-group-item">Reports</RouterLink>
+      <RouterLink active-class="opacity-25" :to="{ name: 'communityMembers' }" class="button-group-item">Members</RouterLink>
+      <RouterLink  v-if="isOwner" :to="{name: 'communityInvitations'}" class="button-group-item">Invitations</RouterLink>
     </div>
     <RouterView :id="props.id"></RouterView>
 

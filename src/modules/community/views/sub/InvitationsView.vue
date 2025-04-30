@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCommunityStore } from '../../stores/community';
+import { useCommunityStore } from '../../stores';
 import { storeToRefs } from 'pinia';
 import { onBeforeMount } from 'vue';
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthStore } from '../stores';
+import { useAuthStore } from '@/modules/user/stores';
 import { storeToRefs } from 'pinia';
 import LanguageSelect from '@/components/LanguageSelect.vue';
 import { useRouter } from 'vue-router';

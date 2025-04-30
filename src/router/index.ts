@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import { communityRouter } from '../modules/community/router/index.ts'
 import { userRouter } from '@/modules/user/router/index.ts'
-import { useAuthStore } from  '@/stores'
+import { useAuthStore } from '@/modules/user/stores/authStore.ts'  
 
 
 const routes = [

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useLanguageStore, useUserStore } from '../stores'
+import { useLanguageStore} from '@/stores'
+import { useUserStore } from '@/modules/user/stores';
 import { storeToRefs } from 'pinia';
 import CommunityListItem from './CommunityListItem.vue';
 import { onBeforeMount } from 'vue';

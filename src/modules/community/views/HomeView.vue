@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
-import { useUserStore, useLanguageStore} from '../stores'
-
+import {useLanguageStore} from '@/stores'
+import { useUserStore } from '@/modules/user/stores';
 import { onBeforeMount } from 'vue';
 import CommunityList from '../components/CommuntyList.vue'
 import JoinCommunity from '../components/JoinCommunity.vue';
