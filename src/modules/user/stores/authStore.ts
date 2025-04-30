@@ -18,6 +18,7 @@ export const useAuthStore = defineStore('auth', () => {
         try {
             await backendSDK.auth.authenticateUser('google', firebaseToken);
             isAuthenticated.value = true;
+            userStore.loadUser();
             return
         } catch (__) { }
 
@@ -31,14 +32,13 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
     const authenticateLocalUser = async () => {
-        await backendSDK.auth.authenticateLocalUser();
-        isAuthenticated.value = backendSDK.auth.isAuthenticated();
+        isAuthenticated.value =  await backendSDK.auth.authenticateLocalUser();
     }
 
 
     const initialize = async () => {
         try {
-            isAuthenticated.value = backendSDK.auth.isAuthenticated();
+            await authenticateLocalUser(); 
             return
         } catch (__) { }
         throw new Error("Cannot initialize the auth store")

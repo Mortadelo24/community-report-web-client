@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { onBeforeMount } from 'vue'
-import { useLanguageStore } from './stores/language.ts'
+import { useLanguageStore } from './stores'
+import { useUserStore } from './modules/user/stores';
 import ServerDown from './components/ServerDown.vue';
 import ErrorModal from './components/modalAlerts/ErrorModal.vue'
+import { useRoute } from 'vue-router';
 
-const { loadLanguagePack } = useLanguageStore();
+const route = useRoute()
 
-onBeforeMount(() => {
-
-  loadLanguagePack();
+onBeforeMount(async() => {
+  await useUserStore().loadUser();  
+  useLanguageStore().loadLanguagePack();
 })
 
 </script>
@@ -16,7 +18,7 @@ onBeforeMount(() => {
   
   <RouterView></RouterView>
 
-  <ServerDown></ServerDown>
+  <ServerDown v-if="route.name != 'serverOffline'"></ServerDown>
   <ErrorModal></ErrorModal>
 
 </template>

@@ -10,20 +10,13 @@ export * from './entities/community'
 export * from './entities/report'
 export * from './entities/invitation'
 
-const initialize = async () => {
-    try {
-        await auth.authenticateLocalUser();
-    } catch (__) { }
-}
-
 const backendSDK = {
     users,
     auth,
     communities, 
     reports,
     invitations,
-    initialize,
-    checkServerHealth
+    checkServerHealth,
 }
 
 export {

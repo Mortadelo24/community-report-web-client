@@ -2,17 +2,23 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import { communityRouter } from '../modules/community/router/index.ts'
 import { userRouter } from '@/modules/user/router/index.ts'
-import { useAuthStore } from '@/modules/user/stores/authStore.ts'  
-
+import { useAuthStore } from '@/modules/user/stores'  
+import { useBackendStore } from '@/stores'
 
 const routes = [
   {
     path: '/',
+    meta: { requiresAuth: true, requiresServer: true },
     ...communityRouter
   },
   {
     path: '/users',
     ...userRouter
+  },
+  {
+    path: '/server-down',
+    name: 'serverOffline',
+    component: () => import('../views/ServerOfflineView.vue')
   },
   {
     path: '/:pathMatch(.*)*',
@@ -29,8 +35,18 @@ const router = createRouter({
 
 })
 
-router.beforeEach(async (to, __) => {
+router.beforeEach(async (to, __) =>{
+    if (to.meta.requiresServer && !useBackendStore().isServerUp){
+      return {
+        name: 'serverOffline',
+        query: {
+          redirect: to.path
+        }
+      }
+    }
+})
 
+router.beforeEach(async (to, __) => {
   if (to.meta.requiresAuth && !useAuthStore().isAuthenticated) {
     return {
       name: 'login'

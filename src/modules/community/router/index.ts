@@ -2,7 +2,6 @@
 
 const communityRouter = {
     component: () => import('../layouts/CommunityLayout.vue'),
-    meta: { requiresAuth: true },
     children: [
 
         {

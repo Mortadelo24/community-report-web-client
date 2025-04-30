@@ -27,7 +27,7 @@ const logOut = () => {
     </button>
     <LanguageSelect></LanguageSelect>
   </nav>
-  <div class="p-4">
+  <div class="p-4"> 
     <RouterView></RouterView>
   </div>
 </template>
