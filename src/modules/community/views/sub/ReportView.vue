@@ -45,6 +45,13 @@ onBeforeMount(async () => {
       <div  class="flex flex-col gap-2 mt-4 ">
         <div v-for="report in reports" :key="report.id">
           <p>{{ report.complaint }}</p>
+
+          <p>
+            
+            {{report.created_at.getDate()  }}/
+            {{report.created_at.getUTCMonth()  }}/
+            {{report.created_at.getUTCFullYear() }}
+          </p>
         </div>
       </div>
     </div>

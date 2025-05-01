@@ -31,7 +31,9 @@ const signIn = async () => {
     <div class="flex flex-col gap-2">
       <Button color="blue">Login to your account</Button>
       <p class="text-center font-medium">Or</p>
-      <Button color="cyan" @click="signIn" type="button" class="flex justify-center items-center">
+      <Button color="cyan" @click="signIn" type="button">
+        <div class="flex flex-row items-center justify-center">
+          
         <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
           viewBox="0 0 18 19">
           <path fill-rule="evenodd"
@@ -39,6 +41,7 @@ const signIn = async () => {
             clip-rule="evenodd" />
         </svg>
         Sign in with Google
+        </div>
       </Button>
     </div>
     <div class="text-sm font-medium text-gray-500 dark:text-gray-300">

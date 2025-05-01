@@ -19,7 +19,6 @@ const create = async(community_id: string, complaint: string): Promise<Report> =
         })).data
         return parseReport(data)
     } catch(__){}
-    
     throw new Error("Could not create the report")
 }
 

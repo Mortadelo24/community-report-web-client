@@ -23,9 +23,11 @@ const parseUser = (rawUser: any) => {
 }
 
 const parseReport = (rawReport: any) =>{
+    console.log()
     return new Report(
         rawReport['id'],
-        rawReport['complaint']
+        rawReport['complaint'],
+        new Date(rawReport['created_at'])
     )
 }
 

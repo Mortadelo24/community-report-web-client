@@ -1,27 +1,28 @@
 <script setup lang="ts">
-type icon = 'logout';
+import type { ButtonColor, ButtonIcon, Buttonsize, ButtonType } from '../types/button';
 
-const { disabled, type = 'button', color = 'blue'} = defineProps<{
+const { disabled, type = 'button', color = 'blue', size = 'md' } = defineProps<{
     disabled?: boolean,
-    type?: 'button' | 'submit' | 'reset',
-    color?: 'green' | 'red' | 'blue' | 'cyan',
-    size?: 'sm' | 'md' | 'lg',
-    icon?: icon,
+    type?: ButtonType,
+    color?: ButtonColor,
+    size?: Buttonsize,
+    icon?: ButtonIcon,
     variant?: undefined
 }>()
 
-
 </script>
 <template>
-    <button :class="['button-' + color]" class="button-base flex flex-row items-center justify-center" :type="type"
-        :disabled="disabled">
+    <button :class="[
+        ['button-color-' + color],
+        ['button-size-' + size],
+    ]" class="button-base flex flex-row items-center justify-center" :type="type" :disabled="disabled">
         <span v-if="icon" class="material-symbols-outlined">
             {{ icon }}
         </span>
-        <p :class="{hidden: icon}" class="md:block" >
+        <p :class="{ hidden: icon }" class="md:block">
 
-            <slot >
-                ButtonBase
+            <slot>
+                {{ 'Button' + color }}
             </slot>
         </p>
     </button>
