@@ -15,11 +15,13 @@ const selectedLanguage = ref<keyof LanguageCode>(preference.value);
 watch(selectedLanguage, () => {
   loadLanguagePack(selectedLanguage.value);
 })
+
+
 </script>
 
 <template>
   <div>
-    
+        
     <select v-model="selectedLanguage" class="select-a">
       <option v-for="language in supportedLanguages" :value="language">{{ language }}</option>
     </select>
