@@ -27,7 +27,7 @@ const logOut = () => {
 <template>
   <nav class="flex p-2 gap-2 items-center ">
     <RouterLink :to="{name: 'home'}">
-      <Button :disabled="$route.name == 'home'" color="blue">
+      <Button :disabled="$route.name == 'home'" icon="home" color="blue">
        Home 
       </Button>
     </RouterLink>

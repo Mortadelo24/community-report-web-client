@@ -15,7 +15,7 @@ const { disabled, type = 'button', color = 'blue', size = 'md' } = defineProps<{
     <button :class="[
         ['button-color-' + color],
         ['button-size-' + size],
-    ]" class="button-base flex flex-row items-center justify-center" :type="type" :disabled="disabled">
+    ]" class="button-base flex flex-row items-center justify-center gap-2" :type="type" :disabled="disabled">
         <span v-if="icon" class="material-symbols-outlined">
             {{ icon }}
         </span>

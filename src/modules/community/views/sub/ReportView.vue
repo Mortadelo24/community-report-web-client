@@ -5,6 +5,7 @@ import { complaints } from '@/assets/commonComplains.json'
 import { onBeforeMount, ref } from 'vue'
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
+import ReportListItem from '../../components/ReportListItem.vue';
 
 const communityStore = useCommunityStore();
 const notificationStore = useNotificationStore();
@@ -43,16 +44,8 @@ onBeforeMount(async () => {
     <div v-if="isOwner" class="container-b max-w-md">
       <p class="font-semibold text-lg">Reports</p>
       <div  class="flex flex-col gap-2 mt-4 ">
-        <div v-for="report in reports" :key="report.id">
-          <p>{{ report.complaint }}</p>
-
-          <p>
-            
-            {{report.created_at.getDate()  }}/
-            {{report.created_at.getUTCMonth()  }}/
-            {{report.created_at.getUTCFullYear() }}
-          </p>
-        </div>
+        
+        <ReportListItem v-for="report in reports" :report="report" :key="report.id"></ReportListItem>
       </div>
     </div>
   </div>
