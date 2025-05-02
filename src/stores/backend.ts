@@ -19,7 +19,6 @@ export const useBackendStore = defineStore('backend', () => {
     } else {
       isServerUp.value = false;
     }
-
   }
 
 
