@@ -3,7 +3,7 @@
 class Report{
     constructor(
         public id: string,
-        public complaint: string,
+        public complaintId: string,
         public created_at: Date
     ){}
 }

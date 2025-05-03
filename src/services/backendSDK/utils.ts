@@ -22,11 +22,10 @@ const parseUser = (rawUser: any) => {
     )
 }
 
-const parseReport = (rawReport: any) =>{
-    console.log()
+const parseReport = (rawReport: any) =>{ 
     return new Report(
         rawReport['id'],
-        rawReport['complaint'],
+        rawReport['complaint_id'],
         new Date(rawReport['created_at'])
     )
 }

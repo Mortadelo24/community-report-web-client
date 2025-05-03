@@ -8,7 +8,7 @@ const {report} = defineProps<{
 </script>
 <template>
 <div class="flex flex-row gap-4 items-center justify-between">
-<p>{{ report.complaint }}</p>
+<p>{{ report.complaintId }}</p>
 <DateTime :date="report.created_at"></DateTime>
 </div>
 </template>
