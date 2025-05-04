@@ -30,7 +30,7 @@ const authenticateUser = async (provider: Provider, token: string) => {
 
         return true
     } catch (__) { }
-    return false
+    throw new Error("Can not authenticate the user")
 }
 
 const logout = () => {

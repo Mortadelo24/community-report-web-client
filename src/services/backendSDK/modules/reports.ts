@@ -11,10 +11,10 @@ const get = async(id: string): Promise<Report|null>=>{
     return null
 }
 
-const create = async(community_id: string, complaint: string): Promise<Report> => {
+const create = async(community_id: string, complaint_id: string): Promise<Report> => {
     try{
         const data = (await backend.post('/reports', {
-            complaint,
+            complaint_id,
             community_id
         })).data
         return parseReport(data)
