@@ -1,5 +1,5 @@
 import { Community } from "./entities/community"
-import { Report } from "./entities/report"
+import { Report, ReportDatachar } from "./entities/report"
 import { User } from "./entities/user"
 import { Invitation } from "./entities/invitation"
 import { Complaint } from "./entities/complaint"
@@ -32,6 +32,14 @@ const parseReport = (rawReport: any) =>{
     )
 }
 
+const parseReportDatachar = (rawReportDatachar: any)=>{
+  return new ReportDatachar(
+    rawReportDatachar['id'],
+    rawReportDatachar['text'],
+    rawReportDatachar['count']
+  )
+}
+
 const parseComplaint = (rawComplaint: any) =>{
   return new Complaint(
     rawComplaint['id'],
@@ -49,6 +57,7 @@ export {
     parseCommunity,
     parseUser,
     parseReport,
+    parseReportDatachar,
     parseComplaint,
     parseInvitation
 }

@@ -1,5 +1,5 @@
 import { defineStore, storeToRefs } from 'pinia'
-import { backendSDK, Community, User, Invitation, Report, type CommunityCreate } from '@/services/backendSDK'
+import { backendSDK, Community, User, Invitation, Report, type CommunityCreate, ReportDatachar } from '@/services/backendSDK'
 import { computed, ref } from 'vue'
 import { useUserStore } from '@/modules/user/stores';
 
@@ -14,6 +14,7 @@ export const useCommunityStore = defineStore('community', () => {
     const members = ref<User[]>([]);
     const invitations = ref<Invitation[]>([]);
     const reports = ref<Report[]>([]);
+    const reportDatachars = ref<ReportDatachar[]>([]); 
 
     const create = (communityCreate: CommunityCreate) => {
         return backendSDK.communities.create(communityCreate);
@@ -60,6 +61,10 @@ export const useCommunityStore = defineStore('community', () => {
         if (!community.value) return
         reports.value = await community.value.getReports();
     }
+    const loadReportsDatachars = async()=>{
+      if(!community.value) return
+        reportDatachars.value = await backendSDK.reports.getDatachars(community.value.id)
+    }
 
     const join = (invitationId: string) => {
         return backendSDK.invitations.join(invitationId)
@@ -72,6 +77,7 @@ export const useCommunityStore = defineStore('community', () => {
         loadMembers,
         loadInvitations,
         loadReports,
+        loadReportsDatachars,
         createInvitation,
         createReport,
         join,
@@ -79,7 +85,8 @@ export const useCommunityStore = defineStore('community', () => {
         members,
         invitations,
         reports,
-        isOwner
+        isOwner,
+        reportDatachars
     }
 
 })

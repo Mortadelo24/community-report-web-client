@@ -8,6 +8,14 @@ class Report{
     ){}
 }
 
+class ReportDatachar{
+  constructor(
+    public id: string,
+    public text: string,
+    public count: number
+  ){}
+}
+
 class ReportCreate{
     constructor(
 
@@ -16,5 +24,6 @@ class ReportCreate{
 
 export {
     Report,
-    ReportCreate
+    ReportCreate,
+    ReportDatachar
 }
