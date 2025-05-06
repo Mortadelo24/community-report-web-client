@@ -1,4 +1,6 @@
 import {getMembers, getReports, getInvitations} from '../modules/communities'
+import { getStatisticCommunityReports } from '../modules/statistics'
+
 
 class Community{
     constructor(
@@ -15,6 +17,9 @@ class Community{
     }
     public getInvitations(){
         return getInvitations(this.id)
+    }
+    public getStatisticReports(){
+      return getStatisticCommunityReports(this.id)
     }
 }
 

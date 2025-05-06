@@ -1,12 +1,13 @@
 <script setup lang="ts">
   import { onBeforeMount, ref } from 'vue';
-import { useCommunityStore, useComplaintStore } from '../stores';
+import { useCommunityStore, useComplaintStore, useStatisticStore } from '../stores';
 import { storeToRefs } from 'pinia';
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
 
 const communityStore = useCommunityStore();
 const complaintStore = useComplaintStore();
+const statisticStore = useStatisticStore();
 const notificationStore = useNotificationStore();
 
 const {complaints} = storeToRefs(complaintStore);
@@ -22,7 +23,7 @@ const createReport = async () => {
   }
 
   await communityStore.loadReports();
-  await communityStore.loadReportsDatachars();
+  await statisticStore.loadStatisticCommunityReports();
 }
 
 onBeforeMount(async()=>{

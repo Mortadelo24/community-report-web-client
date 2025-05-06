@@ -13,7 +13,7 @@ const { isOwner, community } = storeToRefs(communityStore);
   <div v-if="community" class="flex flex-row flex-wrap justify-start gap-4 items-start">
     <ReportCreate></ReportCreate> 
     <ReportList v-if="isOwner"></ReportList>
-    <ReportGraph></ReportGraph>
+    <ReportGraph v-if="isOwner"></ReportGraph>
   </div>
 
 </template>

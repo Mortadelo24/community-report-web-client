@@ -1,9 +1,9 @@
 import { Community } from "./entities/community"
-import { Report, ReportDatachar } from "./entities/report"
+import { Report} from "./entities/report"
 import { User } from "./entities/user"
 import { Invitation } from "./entities/invitation"
 import { Complaint } from "./entities/complaint"
-
+import { StatisticReport } from "./entities/statistic"
 
 // Todo create a generic function for lists
 
@@ -32,8 +32,8 @@ const parseReport = (rawReport: any) =>{
     )
 }
 
-const parseReportDatachar = (rawReportDatachar: any)=>{
-  return new ReportDatachar(
+const parseStatisticReport = (rawReportDatachar: any)=>{
+  return new StatisticReport(
     rawReportDatachar['id'],
     rawReportDatachar['text'],
     rawReportDatachar['count']
@@ -57,7 +57,7 @@ export {
     parseCommunity,
     parseUser,
     parseReport,
-    parseReportDatachar,
+    parseStatisticReport,
     parseComplaint,
     parseInvitation
 }

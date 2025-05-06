@@ -1,6 +1,6 @@
 import {Report} from '../entities/report'
 import { backend } from '../config'
-import { parseReport, parseReportDatachar } from '../utils'
+import { parseReport} from '../utils'
 
 
 const get = async(id: string): Promise<Report|null>=>{
@@ -9,18 +9,6 @@ const get = async(id: string): Promise<Report|null>=>{
         return parseReport(data)
     }catch(__){}
     return null
-}
-
-const getDatachars = async(community_id: string) =>{
-  try{
-    const data = (await backend.get('/reports/datachars',{
-      params: {
-        community_id 
-      }
-    })).data
-    return data.map(parseReportDatachar)
-  }catch(__){}
-  return []
 }
 
 const create = async(community_id: string, complaint_id: string): Promise<Report> => {
@@ -36,6 +24,5 @@ const create = async(community_id: string, complaint_id: string): Promise<Report
 
 export{
     get,
-    create,
-    getDatachars
+    create
 }
