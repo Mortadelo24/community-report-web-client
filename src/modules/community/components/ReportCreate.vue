@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia';
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
 
+
 const communityStore = useCommunityStore();
 const complaintStore = useComplaintStore();
 const statisticStore = useStatisticStore();

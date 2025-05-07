@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import type { ButtonColor, ButtonIcon, Buttonsize, ButtonType } from '../types/button';
+import type { ButtonColor, Buttonsize, ButtonType } from '../types/button';
+import type { IconType } from '../types/icons';
+import Icon from './Icon.vue';
 
 const { disabled, type = 'button', color = 'blue', size = 'md' } = defineProps<{
     disabled?: boolean,
     type?: ButtonType,
     color?: ButtonColor,
     size?: Buttonsize,
-    icon?: ButtonIcon,
+    icon?: IconType,
     variant?: undefined
 }>()
 
@@ -16,9 +18,8 @@ const { disabled, type = 'button', color = 'blue', size = 'md' } = defineProps<{
         ['button-color-' + color],
         ['button-size-' + size],
     ]" class="button-base flex flex-row items-center justify-center gap-2" :type="type" :disabled="disabled">
-        <span v-if="icon" class="material-symbols-outlined">
-            {{ icon }}
-        </span>
+        
+        <Icon v-if="icon" :icon="icon"></Icon>
         <p :class="{ hidden: icon }" class="md:block">
 
             <slot>

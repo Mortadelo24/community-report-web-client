@@ -6,6 +6,11 @@ const elementRouter = {
             path: 'buttons',
             name: 'buttons',
             component: ()=>import('../views/ButtonsView.vue')
+        },
+        {
+          path: 'inputs',
+          name: 'inputs',
+          component: ()=> import('../views/InputsView.vue')
         }
     ]
 }

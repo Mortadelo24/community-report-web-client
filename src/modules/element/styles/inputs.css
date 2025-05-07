@@ -1,0 +1,38 @@
+.input-base {
+  @apply bg-blue-50 border-gray-300 text-gray-900;
+  @apply dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white;
+
+  @apply rounded-lg;
+
+  @apply block outline-0;
+}
+
+.input-color-blue {
+  @apply focus:ring-blue-500 focus:border-blue-500;
+  @apply dark:focus:ring-blue-500 dark:focus:outline-blue-500;
+  @apply focus:outline-2;
+}
+
+.input-size-large {
+  @apply p-4 text-base
+}
+
+.input-size-normal {
+  @apply p-2.5;
+  @apply text-sm;
+}
+
+.input-size-small {
+  @apply p-2 text-xs
+}
+
+
+.input-with-icon{
+@apply rounded-e-lg rounded-s-none
+}
+.input-icon{
+  @apply inline-flex items-center px-3 text-sm border-e-0  rounded-s-lg border;
+  @apply  text-gray-900 bg-gray-200 border-gray-300; 
+  @apply dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600;
+}
+

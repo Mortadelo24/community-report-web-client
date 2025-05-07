@@ -4,6 +4,8 @@ import { useCommunityStore } from '../stores/community';
 import { router } from '@/router';
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
+import Input from '@/modules/element/components/Input.vue';
+
 
 const communityStore = useCommunityStore();
 const notificationStore = useNotificationStore();
@@ -29,11 +31,10 @@ const joinCommunity = async () => {
 <template>
     <div class="max-w-md container-b text-center">
         <p class="text-a">Join a community</p>
-        <form @submit.prevent="joinCommunity" class="flex flex-col justify-center items-center h-full gap-2">
-            <div class="text-left w-full">
+        <form @submit.prevent="joinCommunity" class="flex flex-col justify-center items-center h-full gap-4">
+            <div class="text-left w-full flex flex-col gap-2">
                 <p class="font-semibold">Invitation CODE</p>
-                <input v-model="invitationId" placeholder="eg. 3fa85f64-5717-4562-b3fc-2c963f66afa6"
-                    class="input-a w-full mt-2" type="text">
+                <Input v-model="invitationId" placeholder="3fa85f64-5717-4562-b3fc-2c963f66afa6"></Input>
             </div>
             <Button type="submit">Join</Button>
             

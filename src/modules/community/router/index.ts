@@ -2,6 +2,9 @@
 
 const communityRouter = {
     component: () => import('../layouts/CommunityLayout.vue'),
+    redirect: ()=>{
+      return {name: 'home'}
+    },
     children: [
 
         {
@@ -11,12 +14,12 @@ const communityRouter = {
 
         },
         {
-            path: '/communities/create',
+            path: 'communities/create',
             name: 'communityCreate',
             component: () => import('../views/CreateView.vue'),
         },
         {
-            path: '/communities/:id',
+            path: 'communities/:id',
             name: 'community',
             component: () => import('../views/CommunityView.vue'),
             redirect: () => {

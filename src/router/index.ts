@@ -9,8 +9,9 @@ import { useBackendStore } from '@/stores'
 
 const routes = [
   {
-    path: '/',
+    path: '/app',
     meta: { requiresAuth: true, requiresServer: true },
+    name: 'app', 
     ...communityRouter
   },
   {
@@ -21,6 +22,11 @@ const routes = [
   {
     path: '/elements',
     ...elementRouter
+  },
+  {
+    path: '',
+    name: 'rootHome',
+    component: () => import('../views/HomeView.vue')
   },
   {
     path: '/form',

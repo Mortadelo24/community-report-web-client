@@ -3,6 +3,7 @@ import { useAuthStore } from '../stores';
 import Alert from '@/components/alerts/Alert.vue';
 import { useRouter } from 'vue-router';
 import Button from '@/modules/element/components/Button.vue';
+import Input from '@/modules/element/components/Input.vue';
 import { useNotificationStore } from '@/stores';
 
 const authStore = useAuthStore();
@@ -31,11 +32,12 @@ const signIn = async () => {
     <Alert>Only copatible with google login</Alert>
     <label class="flex flex-col gap-2 text-sm font-medium text-gray-900 dark:text-white">
       Email
-      <input type="text" class="input-a">
+      <Input icon="mail" type="email" placeholder="email@example.com"></Input>
+      
     </label>
     <label class="flex flex-col gap-2 text-sm font-medium text-gray-900 dark:text-white">
       Your password
-      <input type="text" class="input-a">
+      <Input icon="key" type="password"></Input>
     </label>
     <div class="flex flex-col gap-2">
       <Button color="blue">Login to your account</Button>

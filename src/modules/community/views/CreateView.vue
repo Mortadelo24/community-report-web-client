@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import Button from '@/modules/element/components/Button.vue';
+import Input from '@/modules/element/components/Input.vue';
 import { router } from '@/router'
 import { ref } from 'vue'
 import { useCommunityStore } from '../stores/community';
@@ -26,16 +27,14 @@ const createNewCommunity = async () => {
 <template>
     <div class="flex flex-col items-center justify-center">
 
-        <form @submit.prevent="createNewCommunity"  class="container-b flex flex-col gap-6 p-2 max-w-md">
+        <form @submit.prevent="createNewCommunity"  class="container-b flex flex-col gap-4 p-2 max-w-md">
             <p class="font-bold text-xl">Create a Community</p>
-            <div class="flex flex-col">
+            <div class="flex flex-col gap-2">
                 <p class="font-semibold">Name</p>
-                <input type="text" v-model="newCommunityName" class="w-full mt-1 input-a"
-                    placeholder="Comunidad martinez"></input>
+                <Input v-model="newCommunityName" placeholder="Community name"></Input>
             </div>
             <div class="w-full flex flex-row gap-2 justify-end">
                 <Button type="submit" color="cyan" >create</Button>
-
             </div>
         </form>
     </div>
