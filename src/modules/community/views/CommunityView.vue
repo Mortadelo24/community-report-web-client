@@ -27,6 +27,6 @@ onBeforeUnmount(() => {
       <RouterLink active-class="opacity-25" :to="{ name: 'communityMembers' }" class="button-group-item">Members</RouterLink>
       <RouterLink  active-class="opacity-25"  v-if="isOwner" :to="{name: 'communityInvitations'}" class="button-group-item">Invitations</RouterLink>
     </div>
-    <RouterView :id="props.id"></RouterView>
+    <RouterView :communityId="props.id"></RouterView>
   </div>
 </template>

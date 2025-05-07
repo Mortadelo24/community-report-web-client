@@ -3,6 +3,7 @@ import { Report, Complaint } from '@/services';
 import DateTime from '@/modules/element/components/DateTime.vue';
 import { useComplaintStore } from '../stores';
 import { onBeforeMount, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const { report } = defineProps<{
   report: Report
@@ -17,8 +18,8 @@ onBeforeMount(async()=>{
 
 </script>
 <template>
-  <div class="flex flex-row gap-4 items-center justify-between">
+  <RouterLink :to="{name: 'communityReport', params: {reportId: report.id}}" class="flex flex-row gap-4 items-center justify-between">
     <p>{{ complaint?.text }}</p>
     <DateTime :date="report.created_at"></DateTime>
-  </div>
+  </RouterLink>
 </template>

@@ -11,6 +11,11 @@ const elementRouter = {
           path: 'inputs',
           name: 'inputs',
           component: ()=> import('../views/InputsView.vue')
+        },
+        {
+          path: 'containers',
+          name: 'containers',
+          component: ()=> import('../views/ContainersView.vue')
         }
     ]
 }
