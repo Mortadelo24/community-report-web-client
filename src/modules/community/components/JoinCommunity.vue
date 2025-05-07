@@ -5,6 +5,7 @@ import { router } from '@/router';
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
 import Input from '@/modules/element/components/Input.vue';
+import Container from '@/modules/element/components/Container.vue';
 
 
 const communityStore = useCommunityStore();
@@ -29,7 +30,7 @@ const joinCommunity = async () => {
 </script>
 
 <template>
-    <div class="max-w-md container-b text-center">
+    <Container class="max-w-md w-full p-6 container-b text-center">
         <p class="text-a">Join a community</p>
         <form @submit.prevent="joinCommunity" class="flex flex-col justify-center items-center h-full gap-4">
             <div class="text-left w-full flex flex-col gap-2">
@@ -39,5 +40,5 @@ const joinCommunity = async () => {
             <Button type="submit">Join</Button>
             
         </form>
-    </div>
+    </Container>
 </template>

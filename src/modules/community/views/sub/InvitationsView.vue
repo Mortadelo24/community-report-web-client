@@ -3,6 +3,7 @@ import { useCommunityStore } from '../../stores';
 import { storeToRefs } from 'pinia';
 import { onBeforeMount } from 'vue';
 import Button from '@/modules/element/components/Button.vue';
+import Container from '@/modules/element/components/Container.vue';
 
 const communityStore = useCommunityStore();
 const { invitations } = storeToRefs(communityStore)
@@ -18,7 +19,7 @@ onBeforeMount(async () => {
 })
 </script>
 <template>
-    <div class="container-b max-w-xl">
+    <Container class=" w-full p-6 container-b max-w-xl">
         <Button color="blue" @click="createInvitation">Create</Button>
         <div class="flow-root">
             <div class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -33,5 +34,5 @@ onBeforeMount(async () => {
             </div>
         </div>
 
-    </div>
+    </Container>
 </template>

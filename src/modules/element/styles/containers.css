@@ -1,0 +1,10 @@
+
+.container-base{
+  @apply border-2   rounded-lg shadow-sm;
+}
+
+.container-color-gray{
+  @apply bg-white border-gray-200;
+  @apply dark:bg-gray-800 dark:border-gray-700;
+}
+

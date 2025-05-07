@@ -4,6 +4,7 @@ import Alert from '@/components/alerts/Alert.vue';
 import { useRouter } from 'vue-router';
 import Button from '@/modules/element/components/Button.vue';
 import Input from '@/modules/element/components/Input.vue';
+import Container from '@/modules/element/components/Container.vue';
 import { useNotificationStore } from '@/stores';
 
 const authStore = useAuthStore();
@@ -26,7 +27,7 @@ const signIn = async () => {
 </script>
 <template>
 
-  <div class="container-b max-w-md flex flex-col gap-6">
+  <Container class=" p-6 w-full max-w-md flex flex-col gap-6">
 
     <p class="text-xl font-medium text-gray-900 dark:text-white">Sign in</p>
     <Alert>Only copatible with google login</Alert>
@@ -59,6 +60,6 @@ const signIn = async () => {
       Not registered? <button class="text-blue-700 hover:underline dark:text-blue-500 cursor-pointer">Create
         account</button>
     </div>
-  </div>
+  </Container>
 
 </template>

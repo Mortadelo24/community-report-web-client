@@ -12,6 +12,7 @@ import { useStatisticStore } from '../stores';
 import { Bar } from 'vue-chartjs';
 import { storeToRefs } from 'pinia';
 import { computed, onBeforeMount } from 'vue';
+import Container from '@/modules/element/components/Container.vue';
 
 const statisticStore = useStatisticStore();
 const { statisticCommunityReports } = storeToRefs(statisticStore);
@@ -77,7 +78,7 @@ const options = {
 
 </script>
 <template>
-  <div class="container-b max-w-md">
+  <Container class="w-full p-6 container-b max-w-md">
     <Bar :data="data" :options="options"></Bar>
-  </div>
+  </Container>
 </template>

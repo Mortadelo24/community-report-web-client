@@ -3,15 +3,6 @@
 
 
 /*@custom-variant dark (&:where(.dark, .dark *)); */
-
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 1,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
-}
-
 img{
   user-drag: none
 }
@@ -28,12 +19,7 @@ html, body {
 .modal-content{
   @apply relative p-4 w-full max-w-md max-h-full
 }
-.container-a{
-  @apply relative bg-neutral-50 rounded-lg shadow-sm dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600
-}
-.container-b{
-  @apply w-full p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700
-}
+
 
 .list-container-item{
   @apply  cursor-pointer py-6 px-6  text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700

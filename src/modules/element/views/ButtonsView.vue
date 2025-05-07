@@ -1,5 +1,5 @@
 <script setup lang="ts">
-
+import Container from '../components/Container.vue';
 import Button from '../components/Button.vue';
 import type { ButtonColor, Buttonsize } from '../types/button';
 
@@ -10,7 +10,7 @@ const sizes: Buttonsize[] = ['sm', 'md', 'lg'];
 </script>
 
 <template>
-  <div class="p-6 flex flex-col gap-6">
+  <Container class="p-6 flex flex-col gap-6">
     <p class="text-big-a">Buttons</p>
     <div class="flex flex-row flex-wrap gap-2">
       <div v-for="color in colors" class="flex flex-row flex-wrap gap-2">
@@ -21,6 +21,6 @@ const sizes: Buttonsize[] = ['sm', 'md', 'lg'];
       </div>
     </div>
 
-  </div>
+  </Container>
 
 </template>

@@ -3,6 +3,7 @@ import { storeToRefs } from 'pinia';
 import { useCommunityStore } from '../../stores/community';
 import { onBeforeMount } from 'vue';
 import Button from '@/modules/element/components/Button.vue';
+import Container from '@/modules/element/components/Container.vue';
 
 const communityStore = useCommunityStore();
 const { members } = storeToRefs(communityStore);
@@ -13,7 +14,7 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-  <div class="container-b max-w-md">
+  <Container class="p-6 w-full max-w-md">
     <div class="flex items-center justify-between mb-4">
       <p class="text-a">Members</p>
       <RouterLink :to="{name: 'communityInvitations'}">
@@ -38,5 +39,5 @@ onBeforeMount(async () => {
         </div>
       </div>
     </div>
-  </div>
+  </Container>
 </template>

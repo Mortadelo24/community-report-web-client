@@ -4,6 +4,7 @@ import { useCommunityStore, useComplaintStore, useStatisticStore } from '../stor
 import { storeToRefs } from 'pinia';
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
+import Container from '@/modules/element/components/Container.vue';
 
 
 const communityStore = useCommunityStore();
@@ -33,7 +34,7 @@ onBeforeMount(async()=>{
 </script>
 
 <template>
-    <div class="container-b flex flex-row gap-2 flex-wrap max-w-xl">
+    <Container class="flex flex-row p-6 gap-2 flex-wrap max-w-xl">
 
       <select v-model="complaintId" class="select-a overflow-hidden">
         <option value="" disabled selected>
@@ -44,5 +45,5 @@ onBeforeMount(async()=>{
         </option>
       </select>
       <Button @click="createReport" color="blue">Send</Button>
-    </div>
+    </Container>
 </template>
