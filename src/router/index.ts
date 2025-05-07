@@ -6,6 +6,7 @@ import { elementRouter } from '@/modules/element/router'
 import { useAuthStore } from '@/modules/user/stores'
 import { useBackendStore } from '@/stores'
 
+
 const routes = [
   {
     path: '/',
@@ -20,6 +21,11 @@ const routes = [
   {
     path: '/elements',
     ...elementRouter
+  },
+  {
+    path: '/form',
+    name: 'form',
+    component: ()=> import('../views/FormView.vue')
   },
   {
     path: '/server-down',
