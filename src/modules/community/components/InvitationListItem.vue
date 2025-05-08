@@ -16,7 +16,7 @@ const { copy, copied, isSupported } = useClipboard({ source })
 <template>
 
   <Container color="slate" class="flex items-center p-4 gap-2">
-    <p class="truncate">{{ invitation.id }}</p>
+    <p class="truncate select-all">{{ invitation.id }}</p>
     <Button icon="content_copy" color="green" v-if="isSupported" @click="copy(source)">
       <span v-if="!copied">Copy</span>
       <span v-else>Copied!</span>

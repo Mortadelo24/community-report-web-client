@@ -1,6 +1,13 @@
 {
-
     "welcome": "Bienvenido",
     "communityListTitle": "Tus comunidades",
-    "appTitle": "Comunidades"
+    "appTitle": "Comunidades",
+    "rootHomeWelcome": "Bienvenido al proyecto-1 de integrador I",
+    "rootHomeSelectLanguageText": "Selecciona tu idioma", 
+    "tryTheAppTitle": "Prueba la app",
+    "fillTheFormTitle": "Rellena el formulario",
+    "goToAppButton": "App",
+    "goToFormButton": "Formulario",
+    "logoutButton": "Cerrar session",
+    "homeButton": "Inicio"
 }

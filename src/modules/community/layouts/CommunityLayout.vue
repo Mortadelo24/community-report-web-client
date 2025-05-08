@@ -7,12 +7,13 @@ import Button from '@/modules/element/components/Button.vue';
 
 import { onBeforeMount } from 'vue';
 import { useUserStore } from '@/modules/user/stores';
+import { useLanguageStore } from '@/stores';
 
 onBeforeMount(async()=>{
     useUserStore().loadUser();
 })
 
-
+const {getPhrase} = useLanguageStore();
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -28,7 +29,7 @@ const logOut = () => {
   <nav class="flex p-2 gap-2 items-center ">
     <RouterLink :to="{name: 'home'}">
       <Button :disabled="$route.name == 'home'" icon="home" color="blue">
-       Home 
+        {{getPhrase('homeButton')}}
       </Button>
     </RouterLink>
     <RouterLink v-if="!isAuthenticated"  :to="{ name: 'login' }">
@@ -37,7 +38,7 @@ const logOut = () => {
       </Button>
     </RouterLink>
     <Button v-else @click="logOut" icon="logout" color="red" type="button">
-    Log out
+      {{getPhrase('logoutButton')}}
     </Button>
     <LanguageSelect></LanguageSelect>
   </nav>

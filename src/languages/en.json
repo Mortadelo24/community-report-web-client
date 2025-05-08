@@ -2,5 +2,13 @@
   
     "welcome": "Welcome",
     "communityListTitle": "Your communities",
-    "appTitle": "Community"
+    "appTitle": "Community",
+    "rootHomeWelcome": "Wecome to project one from integrador I",
+    "rootHomeSelectLanguageText": "Select your language",
+    "tryTheAppTitle": "Try the app",
+    "fillTheFormTitle": "Fill the form",
+    "goToAppButton": "Go to app",
+    "goToFormButton": "Go to form",
+    "logoutButton": "Log out",
+    "homeButton": "Home"
 }

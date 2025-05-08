@@ -2,7 +2,15 @@
 interface LanguagePack {
   welcome: string, 
   communityListTitle: string,
-  appTitle: string
+  appTitle: string,
+  rootHomeWelcome: string,
+  rootHomeSelectLanguageText: string,
+  tryTheAppTitle: string,
+  fillTheFormTitle: string,
+  goToAppButton: string,
+  goToFormButton: string,
+  logoutButton: string,
+  homeButton: string
 }
 
 interface LanguageCode {
