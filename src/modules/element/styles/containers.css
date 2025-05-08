@@ -1,10 +1,23 @@
 
 .container-base{
-  @apply border-2   rounded-lg shadow-sm;
+  @apply border   rounded-lg shadow-sm;
 }
+
+.container-hover{
+  @apply hover:opacity-70
+}
+
 
 .container-color-gray{
-  @apply bg-white border-gray-200;
+  @apply bg-gray-50 border-gray-200;
   @apply dark:bg-gray-800 dark:border-gray-700;
 }
-
+.container-color-slate{
+  @apply bg-slate-50 border-slate-200;
+  @apply dark:bg-slate-800 dark:border-slate-700;
+}
+.container-color-red{
+  @apply bg-red-50  border-red-200 ;
+  @apply dark:bg-gray-800  dark:border-red-700;
+}
+  

@@ -1,4 +1,4 @@
-type IconType = 'logout' | 'home' | 'add' | 'mail' | 'key';
+type IconType = 'logout' | 'home' | 'add' | 'mail' | 'key' | 'info';
 
 
 export{

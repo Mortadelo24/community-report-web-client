@@ -1,0 +1,9 @@
+
+
+.alert-base{
+  @apply text-sm
+}
+
+.alert-color-red{
+  @apply text-red-800 dark:text-red-400
+}

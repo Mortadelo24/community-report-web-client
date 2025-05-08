@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useAuthStore } from '../stores';
-import Alert from '@/components/alerts/Alert.vue';
 import { useRouter } from 'vue-router';
 import Button from '@/modules/element/components/Button.vue';
 import Input from '@/modules/element/components/Input.vue';
 import Container from '@/modules/element/components/Container.vue';
+import Alert from '@/modules/element/components/Alert.vue';
 import { useNotificationStore } from '@/stores';
 
 const authStore = useAuthStore();
@@ -30,7 +30,7 @@ const signIn = async () => {
   <Container class=" p-6 w-full max-w-md flex flex-col gap-6">
 
     <p class="text-xl font-medium text-gray-900 dark:text-white">Sign in</p>
-    <Alert>Only copatible with google login</Alert>
+    <Alert color="red" icon="info">Only copatible with google login</Alert>
     <label class="flex flex-col gap-2 text-sm font-medium text-gray-900 dark:text-white">
       Email
       <Input icon="mail" type="email" placeholder="email@example.com"></Input>

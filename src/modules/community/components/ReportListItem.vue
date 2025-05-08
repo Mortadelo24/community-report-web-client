@@ -4,6 +4,7 @@ import DateTime from '@/modules/element/components/DateTime.vue';
 import { useComplaintStore } from '../stores';
 import { onBeforeMount, ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import Container from '@/modules/element/components/Container.vue';
 
 const { report } = defineProps<{
   report: Report
@@ -12,14 +13,16 @@ const { report } = defineProps<{
 const complaintStore = useComplaintStore();
 const complaint = ref<null | Complaint>();
 
-onBeforeMount(async()=>{
+onBeforeMount(async () => {
   complaint.value = await complaintStore.getComplaint(report.complaintId);
 })
 
 </script>
 <template>
-  <RouterLink :to="{name: 'communityReport', params: {reportId: report.id}}" class="flex flex-row gap-4 items-center justify-between">
-    <p>{{ complaint?.text }}</p>
-    <DateTime :date="report.created_at"></DateTime>
-  </RouterLink>
+  <router-link :to="{ name: 'communityReport', params: { reportId: report.id } }">
+    <Container color="slate" :hover="true" class="p-4">
+      <p>{{ complaint?.text }}</p>
+      <DateTime :date="report.created_at"></DateTime>
+    </Container>
+  </router-link>
 </template>

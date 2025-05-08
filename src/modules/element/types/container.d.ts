@@ -1,4 +1,4 @@
-type ContainerColor = 'gray'
+type ContainerColor = 'gray' | 'red' | 'slate'
 
 
 export{
