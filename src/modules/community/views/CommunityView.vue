@@ -9,7 +9,7 @@ const props = defineProps({
 })
 
 const communityStore = useCommunityStore();
-const { community, isOwner } = storeToRefs(communityStore)
+const { community } = storeToRefs(communityStore)
 
 onBeforeMount(() => {
   if (!props.id) return
@@ -25,7 +25,6 @@ onBeforeUnmount(() => {
     <div class="button-group-container">
       <RouterLink active-class="opacity-25" :to="{ name: 'communityReports' }" class="button-group-item">Reports</RouterLink>
       <RouterLink active-class="opacity-25" :to="{ name: 'communityMembers' }" class="button-group-item">Members</RouterLink>
-      <RouterLink  active-class="opacity-25"  v-if="isOwner" :to="{name: 'communityInvitations'}" class="button-group-item">Invitations</RouterLink>
     </div>
     <RouterView :communityId="props.id"></RouterView>
   </div>

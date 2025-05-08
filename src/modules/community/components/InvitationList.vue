@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useCommunityStore } from '../../stores';
+import { useCommunityStore } from '../stores';
 import { storeToRefs } from 'pinia';
 import { onBeforeMount } from 'vue';
 import Button from '@/modules/element/components/Button.vue';
@@ -19,7 +19,7 @@ onBeforeMount(async () => {
 })
 </script>
 <template>
-    <Container class=" w-full p-6 container-b max-w-xl">
+    <Container class="p-6">
         <Button color="blue" @click="createInvitation">Create</Button>
         <div class="flow-root">
             <div class="divide-y divide-gray-200 dark:divide-gray-700">

@@ -34,9 +34,9 @@ onBeforeMount(async()=>{
 </script>
 
 <template>
-    <Container class="flex flex-row p-6 gap-2 flex-wrap max-w-xl">
+    <Container class="flex flex-row p-6 gap-2 flex-wrap max-w-md">
 
-      <select v-model="complaintId" class="select-a overflow-hidden">
+      <select v-model="complaintId" class="select-a overflow-hidden w-full">
         <option value="" disabled selected>
           Select a complaint
         </option>

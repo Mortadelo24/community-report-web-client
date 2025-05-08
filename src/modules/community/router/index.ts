@@ -43,11 +43,6 @@ const communityRouter = {
           name: 'communityReport',
           component: () => import('../views/sub/ReportView.vue'),
           props: true
-        },
-        {
-          path: 'invitations',
-          name: 'communityInvitations',
-          component: () => import('../views/sub/InvitationsView.vue')
         }
       ]
     },

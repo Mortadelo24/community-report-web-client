@@ -20,7 +20,9 @@ html, body {
   @apply relative p-4 w-full max-w-md max-h-full
 }
 
-
+.container-spacing-a{
+  @apply flex flex-row flex-wrap justify-center md:justify-start gap-4 items-start
+}
 
 
 .text-big-a{
