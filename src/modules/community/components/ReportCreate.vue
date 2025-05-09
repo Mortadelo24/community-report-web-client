@@ -18,13 +18,27 @@ const complaintId = ref('');
 const evidenceInputFile = useTemplateRef('evidenceInputFile');
 const evidenceImageURL = ref<string | null>(null);
 
+const getImageFile = () => {
+  const ImageFileError = new Error('could not get the image file')
+
+  if (!evidenceInputFile.value) throw ImageFileError
+  const files = evidenceInputFile.value.getFiles()
+  if (!files || files.length != 1) throw ImageFileError
+  return files[0]
+}
 const createReport = async () => {
   if (complaintId.value.length < 1) return
+
   try {
-    await communityStore.createReport(complaintId.value)
+    const report = await communityStore.createReport(complaintId.value)
     complaintId.value = '';
     evidenceImageURL.value = null;
-} catch (__) {
+
+    if (evidenceImageURL.value) {
+      await report.addEvidenceImage(getImageFile());
+    }
+  } catch (err) {
+    console.error(err)
     notificationStore.showError("Cannot create the complaint")
   }
 
@@ -32,17 +46,13 @@ const createReport = async () => {
   await statisticStore.loadStatisticCommunityReports();
 }
 const changeImage = () => {
-  if (!evidenceInputFile.value) return
-
-  const files = evidenceInputFile.value.getFiles()
-  if (!files || files.length != 1) return
-
+  const imageFile = getImageFile();
   const reader = new FileReader()
   reader.onload = () => {
     if (typeof reader.result !== 'string') return;
     evidenceImageURL.value = reader.result;
   }
-  reader.readAsDataURL(files[0]);
+  reader.readAsDataURL(imageFile);
 }
 
 onBeforeMount(async () => {

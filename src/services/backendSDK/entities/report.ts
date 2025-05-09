@@ -1,4 +1,4 @@
-
+import {addEvidenceImage} from '../modules/reports'
 
 class Report{
     constructor(
@@ -6,6 +6,9 @@ class Report{
         public complaintId: string,
         public created_at: Date
     ){}
+    public addEvidenceImage(file: File){
+        return addEvidenceImage(this.id, file); 
+    }
 }
 
 

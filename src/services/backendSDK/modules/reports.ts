@@ -22,7 +22,19 @@ const create = async(community_id: string, complaint_id: string): Promise<Report
     throw new Error("Could not create the report")
 }
 
+const addEvidenceImage = async(report_id: string, file: File) =>{
+  const formData = new FormData()
+  formData.append('file', file)
+
+  try{
+    await backend.post(`/reports/${report_id}/evidence`, formData)
+    return 
+  } catch(__){}
+  throw new Error("could not add the image")
+}
+
 export{
     get,
-    create
+    create,
+    addEvidenceImage
 }
