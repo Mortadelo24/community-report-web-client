@@ -4,7 +4,7 @@
 
   @apply rounded-lg;
 
-  @apply block outline-0;
+  @apply outline-0;
 }
 
 .input-color-blue {

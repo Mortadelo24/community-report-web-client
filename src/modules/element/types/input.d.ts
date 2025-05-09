@@ -1,6 +1,6 @@
 type InputColor = 'blue'
 type InputSize = 'small' | 'normal' | 'large'
-type InputType = 'text' | 'time' | 'password' | 'email'
+type InputType = 'text' | 'time' | 'password' | 'email' | 'file'
 
 
 export{
