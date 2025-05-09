@@ -17,7 +17,7 @@ onBeforeMount(async () => {
 
   <Container class="p-6 ">
     <div class="flex items-center justify-between mb-4">
-      <p class="text-a">Members</p>
+      <p class="text-title-lg">Members</p>
     </div>
     <div class="flow-root">
       <div class="divide-y divide-gray-200 dark:divide-gray-700">

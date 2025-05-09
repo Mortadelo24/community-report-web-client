@@ -20,8 +20,8 @@ onBeforeUnmount(() => {
 })
 </script>
 <template>
-  <div v-if="community" class="flex flex-col gap-2">
-    <p class="text-big-a text-center m-4">{{ community?.name }}</p>
+  <div v-if="community" class="flex flex-col gap-4">
+    <p class="text-center text-title-3xl my-6">{{ community?.name }}</p>
     <div class="button-group-container">
       <RouterLink active-class="opacity-25" :to="{ name: 'communityReports' }" class="button-group-item">Reports</RouterLink>
       <RouterLink active-class="opacity-25" :to="{ name: 'communityMembers' }" class="button-group-item">Members</RouterLink>

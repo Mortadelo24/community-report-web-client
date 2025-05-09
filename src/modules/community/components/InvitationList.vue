@@ -20,10 +20,12 @@ onBeforeMount(async () => {
 })
 </script>
 <template>
-  <Container class="p-6">
-    <Button color="blue" @click="createInvitation">Create</Button>
-
-    <div class="flex flex-col gap-2 mt-6">
+  <Container class="flex flex-col gap-6 p-4">
+    <div class="flex flex-row items-center justify-between">
+      <p class="text-title-lg">Invitations</p>
+      <Button icon="add" color="blue" @click="createInvitation">Create</Button>
+    </div>
+    <div class="flex flex-col gap-2">
       <InvitationListItem v-for="invitation in invitations" :ref="invitation.id" :invitation="invitation">
       </InvitationListItem>
     </div>

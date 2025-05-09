@@ -20,7 +20,7 @@ const { disabled, type = 'button', color = 'blue', size = 'md' } = defineProps<{
     ]" class="button-base flex flex-row items-center justify-center gap-2" :type="type" :disabled="disabled">
         
         <Icon v-if="icon" :icon="icon"></Icon>
-        <p v-if="$slots.default" :class="{ hidden: icon }" class="md:block">
+        <p v-if="$slots.default" :class="{ hidden: icon }" class="md:block font-bold">
 
             <slot>
               

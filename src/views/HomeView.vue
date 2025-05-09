@@ -18,7 +18,7 @@ const qrcodeForForm = useQRCode(urlOrigin + '/' + router.resolve({ name: 'form' 
 <template>
   <div class="h-screen">
     <div class="m-6">
-      <p class="text-big-a">{{getPhrase('rootHomeWelcome')}}</p>
+      <p class="text-title-3xl">{{getPhrase('rootHomeWelcome')}}</p>
       <div class="flex gap-2 items-center">
         <p>{{getPhrase('rootHomeSelectLanguageText')}}</p>
         <LanguageSelect></LanguageSelect>
@@ -29,7 +29,7 @@ const qrcodeForForm = useQRCode(urlOrigin + '/' + router.resolve({ name: 'form' 
 
     <div class=" h-full flex flex-row flex-wrap justify-center items-center gap-4 m-6`">
       <Container class="flex flex-col gap-4 p-6 justify-center items-center">
-      <p class="font-bold text-xl">{{getPhrase('tryTheAppTitle')}}</p>
+      <p class="text-title-lg">{{getPhrase('tryTheAppTitle')}}</p>
         <img :src="qrcodeForApp" alt="QR Code" class="w-64 rounded" />
         <div class="flex flex-row justify-between items-center gap-2">
           <RouterLink :to="{ name: 'app' }">
@@ -41,7 +41,7 @@ const qrcodeForForm = useQRCode(urlOrigin + '/' + router.resolve({ name: 'form' 
         </div>
       </Container>
       <Container class="flex flex-col gap-4 p-6 justify-center items-center">
-      <p class="font-bold text-xl">{{getPhrase('fillTheFormTitle')}}</p>
+      <p class="text-title-lg">{{getPhrase('fillTheFormTitle')}}</p>
         <img :src="qrcodeForForm" alt="QR Code" class="w-64 rounded" />
         <div class="flex flex-row justify-between items-center gap-2">
           <RouterLink :to="{ name: 'form' }">

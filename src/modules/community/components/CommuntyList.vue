@@ -24,7 +24,7 @@ onBeforeMount(async () => {
 <template>
   <Container class="p-6 max-w-md w-full">
     <div class="flex flex-row justify-between items-center">
-      <p class="text-xl font-medium">{{ getPhrase('communityListTitle') }}</p>
+      <p class="text-title-lg">{{ getPhrase('communityListTitle') }}</p>
       <router-link :to="{ name: 'communityCreate' }">
         <Button color="cyan">create</Button>
       </router-link>

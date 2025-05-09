@@ -1,0 +1,11 @@
+.text-title-3xl{
+  @apply text-3xl font-extrabold  md:text-4xl lg:text-5xl
+}
+
+.text-title-xl{
+  @apply text-xl font-extrabold md:text-2xl
+}
+
+.text-title-lg{
+  @apply text-lg font-extrabold md:text-xl
+}

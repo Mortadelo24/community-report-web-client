@@ -18,7 +18,7 @@ const { getPhrase } = languageStore;
 <template>
   <div v-if="user">
     <div class="w-full flex flex-row justify-center my-15">
-      <p class="text-big-a text-center my-4 select-all">
+      <p class="text-title-3xl text-center my-4 select-all">
         <span class="text-epic-color-a select-none">{{ getPhrase('welcome') }}</span>
         @{{ user.displayName }}
       </p>

@@ -31,7 +31,7 @@ const joinCommunity = async () => {
 
 <template>
     <Container class="max-w-md w-full p-6 container-b text-center">
-        <p class="text-a">Join a community</p>
+        <p class="text-title-lg">Join a community</p>
         <form @submit.prevent="joinCommunity" class="flex flex-col justify-center items-center h-full gap-4">
             <div class="text-left w-full flex flex-col gap-2">
                 <p class="font-semibold">Invitation CODE</p>

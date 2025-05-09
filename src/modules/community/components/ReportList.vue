@@ -17,7 +17,7 @@ onBeforeMount(async()=>{
 
 <template>
   <Container class="container-b w-full p-6 max-w-md">
-    <p class="font-semibold text-lg">Reports</p>
+    <p class="text-title-lg">Reports</p>
     <div class="flex flex-col gap-2 mt-4 ">
 
       <ReportListItem v-for="report in reports" :report="report" :key="report.id"></ReportListItem>
