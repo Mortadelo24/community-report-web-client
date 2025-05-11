@@ -1,9 +1,19 @@
-# Integrador I 
+# Community Report collector
 
-Requisitos 
+## Descripcion
 
-nodejs
-vite
+A tool that helps communities collect complaints and report.
+
+## Prerequisites
+
+1. Node.js
+
+## Installation
+
+```bash
+npm install
+```
+
 
 Paso
 
