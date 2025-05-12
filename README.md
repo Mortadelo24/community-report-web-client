@@ -14,13 +14,9 @@ A tool that helps communities collect complaints and report.
 
 ## Installation
 
-Install the dependencies
+Install the required dependencies
 ```bash
 npm init
-```
-Install vite
-```bash
-npm install vite
 ```
 
 ## Add evironment variables
