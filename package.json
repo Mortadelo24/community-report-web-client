@@ -1,7 +1,7 @@
 {
-  "name": "integrador",
+  "name": "Community report manager",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -28,17 +28,17 @@
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/tsconfig": "^0.7.0",
     "typescript": "~5.7.2",
-    "vite": "^6.3.4",
+    "vite": "^6.3.5",
     "vue-tsc": "^2.2.4"
   },
-  "description": "This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.",
+  "description": "A tool that helps communities to collect complaints and reports",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mortadelo24/integradorOne.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jose Miranda",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/Mortadelo24/integradorOne/issues"
   },
