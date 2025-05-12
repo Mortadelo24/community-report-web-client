@@ -8,6 +8,12 @@ A tool that helps communities collect complaints and report.
 
 1. Node.js
 
+## Deployment requirements
+
+### Backend server 
+
+<https://github.com/Mortadelo24/integradorOne-backend>(Backend Repository) 
+
 ## Installation
 
 Install the dependencies
@@ -20,7 +26,10 @@ npm install vite
 ```
 
 ## Add evironment variables
+The environment variables are required to be in a .env file
 
+## Backend URL 
+The it can be any instance of the backend
 ```.env
 VITE_BACKEND_URL=http://127.0.0.1:8000/
 ```
