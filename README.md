@@ -1,4 +1,4 @@
-# Community Report collector
+# Community Report collector FRONTEND
 
 ## Descripcion
 
@@ -8,11 +8,9 @@ A tool that helps communities collect complaints and report.
 
 1. Node.js
 
-## Deployment requirements
+### BACKEND 
 
-### Backend server 
-
-<https://github.com/Mortadelo24/integradorOne-backend>(Backend Repository) 
+[https://github.com/Mortadelo24/integradorOne-backend](Backend Repository) 
 
 ## Installation
 
