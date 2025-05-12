@@ -10,7 +10,7 @@ A tool that helps communities collect complaints and report.
 
 ### BACKEND 
 
-[https://github.com/Mortadelo24/integradorOne-backend](Backend Repository) 
+[Repository](https://github.com/Mortadelo24/integradorOne-backend) 
 
 ## Installation
 
