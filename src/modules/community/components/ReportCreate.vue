@@ -32,10 +32,11 @@ const createReport = async () => {
   try {
     const report = await communityStore.createReport(complaintId.value)
     complaintId.value = '';
-    evidenceImageURL.value = null;
 
     if (evidenceImageURL.value) {
       await report.addEvidenceImage(getImageFile());
+      evidenceInputFile.value?.clearFiles()
+      evidenceImageURL.value = null; 
     }
   } catch (err) {
     console.error(err)

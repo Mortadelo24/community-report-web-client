@@ -5,6 +5,7 @@ import * as reports from './modules/reports'
 import * as complaints from './modules/complaints'
 import * as invitations from './modules/invitations'
 import * as statistics from './modules/statistics'
+import * as images from './modules/images'
 import { checkServerHealth } from "./config"
 // entities
 export * from './entities/user'
@@ -13,6 +14,7 @@ export * from './entities/report'
 export * from './entities/invitation'
 export * from './entities/complaint'
 export * from './entities/statistic'
+export * from './entities/image'
 
 const backendSDK = {
     users,
@@ -22,6 +24,7 @@ const backendSDK = {
     complaints,
     invitations,
     statistics,
+    images,
     checkServerHealth,
 }
 

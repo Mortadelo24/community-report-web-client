@@ -25,9 +25,17 @@ const getFiles = (): FileList | null=>{
   return inputFileElement.files
 }
 
+const clearFiles = () => {
+  if(type != 'file') throw new Error('The input should be of file type');
+  if (!input || !input.value) return null
+  input.value.value = '' 
+  return 
+}
+
 
 defineExpose({
-  getFiles
+  getFiles,
+  clearFiles
 })
 </script>
 <template>

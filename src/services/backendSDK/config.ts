@@ -1,8 +1,9 @@
 import axios from 'axios'
 
+const baseURL = import.meta.env.VITE_BACKEND_URL 
 
 const backend = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
+  baseURL,
   timeout: 1000,
 })
 
@@ -21,6 +22,7 @@ const checkServerHealth = async()=>{
 
 export {
     backend,
+    baseURL,
     setAuthenticationToken,
     checkServerHealth
 }

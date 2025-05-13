@@ -4,7 +4,7 @@ import { User } from "./entities/user"
 import { Invitation } from "./entities/invitation"
 import { Complaint } from "./entities/complaint"
 import { StatisticReport } from "./entities/statistic"
-
+import { Image } from "./entities/image"
 // Todo create a generic function for lists
 
 const parseCommunity = (rawCommunity: any) => {
@@ -53,7 +53,14 @@ const parseInvitation = (rawInvitation: any) => {
     )
 }
 
+const parseImage = (rawImage: any) => {
+  return new Image(
+    rawImage['id']
+  )
+}
+
 export {
+  parseImage,
     parseCommunity,
     parseUser,
     parseReport,
