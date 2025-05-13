@@ -30,8 +30,8 @@ onBeforeMount(async () => {
       </router-link>
     </div>
 
-    <div class=" mt-4 min-h-80">
-      <div class="flex flex-col gap-4">
+    <div class=" mt-4 ">
+      <div v-if="communitiesJoined.length > 1" class="flex flex-col min-h-64 gap-4">
 
         <router-link v-for="community in communitiesJoined" :ref="community.id" :to="{ name: 'community', params: { id: community.id } }">
           <Container color="slate" :hover="true" class="p-4">
@@ -41,7 +41,7 @@ onBeforeMount(async () => {
 
       </div>
 
-      <div class=" hidden h-full w-full text-center bold text-xl">
+      <div v-else class="min-h-64 flex justify-center items-center">
         No communities
 
       </div>

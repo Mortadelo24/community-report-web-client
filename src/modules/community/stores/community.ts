@@ -23,11 +23,6 @@ export const useCommunityStore = defineStore('community', () => {
         if (!community.value) throw communityError;
         return await backendSDK.invitations.create(community.value.id);
     }
-    const createReport = async (complaint: string) => {
-        if (!community.value) throw communityError;
-        return await backendSDK.reports.create(community.value.id, complaint)
-    }
-
     const load = async (id: string) => {
         community.value = await backendSDK.communities.get(id);
         if (!community.value) throw new Error('The community was not found')
@@ -56,10 +51,6 @@ export const useCommunityStore = defineStore('community', () => {
         if (!community.value) return
         invitations.value = await community.value.getInvitations();
     }
-    const loadReports = async () => {
-        if (!community.value) return
-        reports.value = await community.value.getReports();
-    }
 
     const join = (invitationId: string) => {
         return backendSDK.invitations.join(invitationId)
@@ -71,9 +62,7 @@ export const useCommunityStore = defineStore('community', () => {
         unLoad,
         loadMembers,
         loadInvitations,
-        loadReports,
         createInvitation,
-        createReport,
         join,
         community,
         members,

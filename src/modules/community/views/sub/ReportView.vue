@@ -1,33 +1,44 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue';
-import { useReportStore } from '../../stores';
+import { computed, onBeforeMount, onBeforeUnmount } from 'vue';
+import { useComplaintStore, useReportStore } from '../../stores';
 import { storeToRefs } from 'pinia';
+import Container from '@/modules/element/components/Container.vue';
 
-  const {reportId, communityId} = defineProps<{
+const { reportId } = defineProps<{
   reportId: string,
-  communityId: string
 }>()
 
 const reportStore = useReportStore();
-const {evidences} = storeToRefs(reportStore)
+const complaintStore = useComplaintStore();
+const { evidences, report } = storeToRefs(reportStore)
 
-
-onBeforeMount(async()=>{
-  await reportStore.loadEvidences(reportId) 
-  evidences.value.forEach(async(evidence) => {
-    await evidence.loadData() 
+onBeforeMount(async () => {
+  await reportStore.loadReport(reportId)
+  evidences.value.forEach(async (evidence) => {
+    await evidence.loadData()
   });
 })
+
+onBeforeUnmount(reportStore.unloadReport)
+
+const complaintText = computed(() => {
+  const result = ''
+  if (!report.value) return result
+  const complaint = complaintStore.getComplaint(report.value.complaintId);
+  if (!complaint) return result
+  return complaint.text
+})
+
+
 </script>
 <template>
-  <div>
+  <Container class="p-6 flex flex-col gap-6">
+    <p class="text-title-xl">{{ complaintText }}</p>
+    <p>{{report?.created_at}}</p>
+
+    <div v-for="evidence in evidences">
+      <img v-if="evidence.dataURL" :src="evidence.dataURL" alt="">
   
-    Report info: {{reportId}}
-    community id : {{communityId}} 
-    <div>
-      <div v-for="evidence in evidences">
-            <img v-if="evidence.dataURL" :src="evidence.dataURL" alt="">
-      </div>
-    </div> 
-  </div>
+    </div>
+  </Container>
 </template>

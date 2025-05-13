@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onBeforeMount, ref, useTemplateRef } from 'vue';
-import { useCommunityStore, useComplaintStore, useStatisticStore } from '../stores';
+import {  ref, useTemplateRef } from 'vue';
+import { useComplaintStore, useReportStore, useStatisticStore } from '../stores';
 import { storeToRefs } from 'pinia';
 import { useNotificationStore } from '@/stores';
 import Button from '@/modules/element/components/Button.vue';
@@ -8,8 +8,8 @@ import Container from '@/modules/element/components/Container.vue';
 import Input from '@/modules/element/components/Input.vue';
 
 
-const communityStore = useCommunityStore();
 const complaintStore = useComplaintStore();
+const reportStore = useReportStore();
 const statisticStore = useStatisticStore();
 const notificationStore = useNotificationStore();
 
@@ -30,7 +30,7 @@ const createReport = async () => {
   if (complaintId.value.length < 1) return
 
   try {
-    const report = await communityStore.createReport(complaintId.value)
+    const report = await reportStore.create(complaintId.value);
     complaintId.value = '';
 
     if (evidenceImageURL.value) {
@@ -43,7 +43,7 @@ const createReport = async () => {
     notificationStore.showError("Cannot create the complaint")
   }
 
-  await communityStore.loadReports();
+  await reportStore.loadReports();
   await statisticStore.loadStatisticCommunityReports();
 }
 const changeImage = () => {
@@ -56,9 +56,6 @@ const changeImage = () => {
   reader.readAsDataURL(imageFile);
 }
 
-onBeforeMount(async () => {
-  await complaintStore.loadComplaints();
-})
 </script>
 
 <template>

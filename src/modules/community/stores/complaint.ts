@@ -10,12 +10,8 @@ const useComplaintStore = defineStore('complaint', ()=>{
     complaints.value = await backendSDK.complaints.getAll();
   }
 
-  const getComplaint = async(id: string)=>{
-    if (complaints.value.length < 1){
-      await loadComplaints();
-    }
-  
-    return complaints.value.find((complaint)=>complaint.id == id)
+  const getComplaint = (id: string)=>{
+    return complaints.value.find((complaint)=>complaint.id == id) || null
   }
 
   return{
