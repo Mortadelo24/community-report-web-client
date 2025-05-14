@@ -3,8 +3,7 @@ import axios from 'axios'
 const baseURL = import.meta.env.VITE_BACKEND_URL 
 
 const backend = axios.create({
-  baseURL,
-  timeout: 1000,
+  baseURL
 })
 
 const setAuthenticationToken = (authToken: string | null) => {

@@ -15,11 +15,11 @@ onBeforeMount(async () => {
 
 <template>
 
-  <Container class="p-6 ">
+  <Container class="p-6">
     <div class="flex items-center justify-between mb-4">
       <p class="text-title-lg">Members</p>
     </div>
-    <div class="flow-root">
+    <div class="flow-root min-h-64">
       <div class="divide-y divide-gray-200 dark:divide-gray-700">
 
         <div v-for="member in members" :id="member.id" class="py-3 sm:py-4 flex items-center">
