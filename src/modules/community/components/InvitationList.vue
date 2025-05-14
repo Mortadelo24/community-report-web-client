@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCommunityStore } from '../stores';
 import { storeToRefs } from 'pinia';
-import {  onBeforeMount } from 'vue';
+import {  onBeforeMount, ref, watchEffect } from 'vue';
 import Button from '@/modules/element/components/Button.vue';
 import Container from '@/modules/element/components/Container.vue';
 import InvitationListItem from './InvitationListItem.vue';
@@ -19,6 +19,12 @@ onBeforeMount(async () => {
   await communityStore.loadInvitations();
 })
 
+const isListEmpty = ref(true)
+
+watchEffect(()=>{
+  isListEmpty.value = invitations.value.length < 1
+})
+
 </script>
 <template>
   <Container class="flex flex-col gap-6 p-4">
@@ -26,7 +32,7 @@ onBeforeMount(async () => {
       <p class="text-title-lg">Invitations</p>
       <Button icon="add" color="blue" @click="createInvitation">Create</Button>
     </div>
-    <div v-if="invitations.length > 1" class="flex flex-col gap-2 min-h-64">
+    <div v-if="!isListEmpty" class="flex flex-col gap-2 min-h-64">
       <InvitationListItem v-for="invitation in invitations" :ref="invitation.id" :invitation="invitation">
       </InvitationListItem>
     </div>

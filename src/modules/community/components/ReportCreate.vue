@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {  ref, useTemplateRef } from 'vue';
+import { ref, useTemplateRef } from 'vue';
 import { useComplaintStore, useReportStore, useStatisticStore } from '../stores';
 import { storeToRefs } from 'pinia';
 import { useNotificationStore } from '@/stores';
@@ -31,20 +31,24 @@ const createReport = async () => {
 
   try {
     const report = await reportStore.create(complaintId.value);
-    complaintId.value = '';
 
     if (evidenceImageURL.value) {
       await report.addEvidenceImage(getImageFile());
-      evidenceInputFile.value?.clearFiles()
-      evidenceImageURL.value = null; 
+
     }
   } catch (err) {
     console.error(err)
     notificationStore.showError("Cannot create the complaint")
+    return 
+  } finally {
+    evidenceInputFile.value?.clearFiles()
+    evidenceImageURL.value = null;
+    complaintId.value = '';
   }
 
   await reportStore.loadReports();
   await statisticStore.loadStatisticCommunityReports();
+
 }
 const changeImage = () => {
   const imageFile = getImageFile();

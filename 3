@@ -3,20 +3,15 @@ import ReportListItem from './ReportListItem.vue';
 
 import { storeToRefs } from 'pinia';
 import { useReportStore } from '../stores';
-import { onBeforeMount, ref, watchEffect } from 'vue';
+import { onBeforeMount } from 'vue';
 import Container from '@/modules/element/components/Container.vue';
 
 const reportStore = useReportStore();
-const { reports } = storeToRefs(reportStore);
+const {reports} = storeToRefs(reportStore);
 
-onBeforeMount(async () => {
+onBeforeMount(async()=>{
   await reportStore.loadReports();
-})
-
-const isListEmpty = ref(true)
-
-watchEffect(()=>{
-  isListEmpty.value = reports.value.length < 1
+  console.log(reports.value)
 })
 
 </script>
@@ -24,11 +19,11 @@ watchEffect(()=>{
 <template>
   <Container class="container-b w-full p-6 max-w-md">
     <p class="text-title-lg">Reports</p>
-    <div v-if="!isListEmpty" class="flex flex-col gap-2 mt-4 min-h-64 ">
+    <div class="flex flex-col gap-2 mt-4 min-h-64 ">
 
       <ReportListItem v-for="report in reports" :report="report" :key="report.id"></ReportListItem>
     </div>
-    <div v-else class="min-h-64 flex justify-center items-center">
+    <div  class="min-h-64 flex justify-center items-center">
       No reports
     </div>
   </Container>

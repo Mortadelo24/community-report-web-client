@@ -2,7 +2,7 @@
 import { useLanguageStore } from '@/stores'
 import { useUserStore } from '@/modules/user/stores';
 import { storeToRefs } from 'pinia';
-import { onBeforeMount, ref } from 'vue';
+import { onBeforeMount, ref, watchEffect } from 'vue';
 import Button from '@/modules/element/components/Button.vue';
 import Container from '@/modules/element/components/Container.vue';
 
@@ -19,6 +19,11 @@ onBeforeMount(async () => {
   isLoading.value = false;
 })
 
+const isListEmpty = ref(true)
+
+watchEffect(()=>{
+  isListEmpty.value = communitiesJoined.value.length < 1
+})
 
 </script>
 <template>
@@ -31,7 +36,7 @@ onBeforeMount(async () => {
     </div>
 
     <div class=" mt-4 ">
-      <div v-if="communitiesJoined.length > 1" class="flex flex-col min-h-64 gap-4">
+      <div v-if="!isListEmpty" class="flex flex-col min-h-64 gap-4">
 
         <router-link v-for="community in communitiesJoined" :ref="community.id" :to="{ name: 'community', params: { id: community.id } }">
           <Container color="slate" :hover="true" class="p-4">
