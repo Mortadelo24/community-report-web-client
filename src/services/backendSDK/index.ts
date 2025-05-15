@@ -15,6 +15,7 @@ export * from './entities/invitation'
 export * from './entities/complaint'
 export * from './entities/statistic'
 export * from './entities/image'
+export * from './entities/pagination'
 
 const backendSDK = {
     users,

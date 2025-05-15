@@ -1,6 +1,6 @@
-import {getMembers, getReports, getInvitations} from '../modules/communities'
+import {getMembers, getInvitations} from '../modules/communities'
 import { getStatisticCommunityReports } from '../modules/statistics'
-
+import { getReports } from '../modules/reports'
 
 class Community{
     constructor(

@@ -1,7 +1,8 @@
 import { defineStore, storeToRefs } from "pinia";
-import { Image, backendSDK, Report } from "@/services";
+import { Image, backendSDK, Report, Pagination } from "@/services";
 import { ref } from "vue";
 import { useCommunityStore } from "./community";
+
 
 const useReportStore = defineStore("report", () => {
   const communityStore = useCommunityStore();
@@ -10,7 +11,7 @@ const useReportStore = defineStore("report", () => {
   const evidences = ref<Image[]>([]);
   const report = ref<Report | null>(null);
   const reports = ref<Report[]>([]);
-
+  const reportsPagination = ref<Pagination>(new Pagination());
 
   const loadEvidences = async (reportId: string) => {
     evidences.value = await backendSDK.images.getEvidences(reportId)
@@ -27,12 +28,14 @@ const useReportStore = defineStore("report", () => {
 
   }
 
-  const loadReports = async () => {
+  const loadReports = async (offset?: number, limit?: number) => {
     if (!community.value) return
-    reports.value = await community.value.getReports();
+    const pagination = new Pagination(offset, limit);
+    reports.value = await backendSDK.reports.getReports(community.value.id, pagination) 
+    reportsPagination.value = pagination; 
   }
 
-  const unloadReports = ()=>{
+  const unloadReports = () => {
     reports.value = []
   }
 
@@ -44,6 +47,7 @@ const useReportStore = defineStore("report", () => {
   return {
     report,
     reports,
+    reportsPagination,
     evidences,
     create,
     loadReport,
