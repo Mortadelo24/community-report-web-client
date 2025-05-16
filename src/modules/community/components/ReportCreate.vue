@@ -34,10 +34,8 @@ const createReport = async () => {
 
     if (evidenceImageURL.value) {
       await report.addEvidenceImage(getImageFile());
-
     }
   } catch (err) {
-    console.error(err)
     notificationStore.showError("Cannot create the complaint")
     return 
   } finally {

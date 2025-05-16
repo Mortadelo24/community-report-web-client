@@ -4,9 +4,6 @@ const baseURL = import.meta.env.VITE_BACKEND_URL
 
 const backend = axios.create({
   baseURL,
-  headers: {
-    "Content-Type": "application/json",
-  },
 })
 
 const setAuthenticationToken = (authToken: string | null) => {

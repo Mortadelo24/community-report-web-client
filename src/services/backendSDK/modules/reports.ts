@@ -42,10 +42,10 @@ const addEvidenceImage = async (report_id: string, file: File) => {
   formData.append('file', file)
 
   try {
-    await backend.post(`/images/evidence`, formData, {
+    await backend.post(`images/evidence`, formData, {
       params: {
         report_id
-      }
+      },
     })
     return
   } catch (__) { }
