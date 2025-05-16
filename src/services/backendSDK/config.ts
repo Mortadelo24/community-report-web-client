@@ -1,27 +1,30 @@
 import axios from 'axios'
 
-const baseURL = import.meta.env.VITE_BACKEND_URL 
+const baseURL = import.meta.env.VITE_BACKEND_URL
 
 const backend = axios.create({
-  baseURL
+  baseURL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 })
 
 const setAuthenticationToken = (authToken: string | null) => {
   console.log("Auth token: ", authToken)
-  backend.defaults.headers.common['Authorization'] = `Bearer ${authToken}`; 
+  backend.defaults.headers.common['Authorization'] = `Bearer ${authToken}`;
 }
 
-const checkServerHealth = async()=>{
-  try{
+const checkServerHealth = async () => {
+  try {
     await backend.get('/health');
     return true
-  }catch(__){} 
+  } catch (__) { }
   return false
 }
 
 export {
-    backend,
-    baseURL,
-    setAuthenticationToken,
-    checkServerHealth
+  backend,
+  baseURL,
+  setAuthenticationToken,
+  checkServerHealth
 }
