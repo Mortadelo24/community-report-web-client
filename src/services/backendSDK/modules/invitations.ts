@@ -7,7 +7,7 @@ import { parseCommunity, parseInvitation } from "../utils"
 
 const create = async(community_id: string): Promise<Invitation> => {
     try{
-        const data = (await backend.post('invitations',{
+        const data = (await backend.post('/invitations/',{
             community_id
         })).data
 
@@ -19,7 +19,7 @@ const create = async(community_id: string): Promise<Invitation> => {
 
 const get = async(id: string): Promise<Invitation | null> => {
     try{
-        const data = (await backend.get(`invitations/${id}`)).data
+        const data = (await backend.get(`/invitations/${id}`)).data
         return parseInvitation(data)
     }catch(__){}
 
@@ -28,7 +28,7 @@ const get = async(id: string): Promise<Invitation | null> => {
 
 const join = async(id: string): Promise<Community> => {
     try{
-        const data = (await backend.post('invitations/join',{
+        const data = (await backend.post('/invitations/join',{
             id
         })).data
 

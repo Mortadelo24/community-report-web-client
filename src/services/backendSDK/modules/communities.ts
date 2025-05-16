@@ -5,7 +5,7 @@ import type {Invitation} from '../entities/invitation'
 
 const create = async (communityCreate: CommunityCreate): Promise<Community> => {
     try{
-        const data = (await backend.post('/communities', communityCreate )).data;
+        const data = (await backend.post('/communities/', communityCreate )).data;
         return parseCommunity(data)
     }catch(__){
         throw new Error("Could not create the community")
@@ -34,7 +34,7 @@ const getMembers = async (id: string): Promise<User[]> => {
 
 const getInvitations = async (community_id: string): Promise<Invitation[]> => {
     try{
-        const data = (await backend.get('invitations',{
+        const data = (await backend.get('invitations/',{
             params: {
                 community_id
             }

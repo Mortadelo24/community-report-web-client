@@ -17,7 +17,7 @@ const getReports = async (community_id: string, pagination: Pagination = new Pag
       community_id,
       ...pagination
     }
-    const data = (await backend.get('reports', {
+    const data = (await backend.get('/reports/', {
       params
     })).data
     return data.map(parseReport);
@@ -28,7 +28,7 @@ const getReports = async (community_id: string, pagination: Pagination = new Pag
 
 const create = async (community_id: string, complaint_id: string): Promise<Report> => {
   try {
-    const data = (await backend.post('/reports', {
+    const data = (await backend.post('/reports/', {
       complaint_id,
       community_id
     })).data

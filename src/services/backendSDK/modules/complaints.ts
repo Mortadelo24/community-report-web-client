@@ -11,7 +11,7 @@ const get = async(id: string) =>{
 
 const getAll = async()=>{
   try{
-    const data = (await backend.get('/complaints')).data
+    const data = (await backend.get('/complaints/')).data
     return data.map(parseComplaint)
   }catch(__){}
 
